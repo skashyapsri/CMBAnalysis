@@ -1,0 +1,70 @@
+# Python specific
+__pycache__/
+*.py[cod]
+*.so
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment directories
+venv/
+ENV/
+env/
+*.env
+
+# Distribution/Packaging
+build/
+dist/
+*.egg-info/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# VS Code settings
+.vscode/
+
+# IDEs and Editors
+.idea/
+*.iml
+*.suo
+*.user
+*.userosscache
+*.sln
+*.swp
+
+# macOS specific
+.DS_Store
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+
+# Log files
+*.log
+
+# Test and coverage directories
+.coverage
+nosetests.xml
+coverage.xml
+*.cover
+*.hypothesis/
+*.tox/
+
+# Pytest cache
+.cache/
+
+# MyPy type check reports
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Cython debug symbols
+cython_debug/
+
+# Documentation build directories
+docs/_build/
+docs/build/
