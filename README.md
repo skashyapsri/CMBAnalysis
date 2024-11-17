@@ -165,10 +165,10 @@ If you use this code in your research, please cite:
 
 ```bibtex
 @software{cmb_analysis2024,
-  author = {Your Name},
+  author = {Srikrishna S Kashyap},
   title = {CMBAnalysis: A Modern Framework for Cosmic Microwave Background Analysis},
   year = {2024},
-  url = {https://github.com/yourusername/cmb-analysis},
+  url = {https://github.com/skashyapsri/CMBAnalysis},
   version = {1.0.0}
 }
 ```
@@ -185,6 +185,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Your Name - your.email@institution.edu
+Srikrishna S Kashyap - skashyapsri04@gmail.com
 
-Project Link: [https://github.com/yourusername/cmb-analysis](https://github.com/yourusername/cmb-analysis)
+Project Link: [https://github.com/skashyapsri/CMBAnalysis](https://github.com/skashyapsri/CMBAnalysis)
