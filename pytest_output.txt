@@ -4,235 +4,204 @@ cachedir: .pytest_cache
 rootdir: /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis
 configfile: setup.cfg
 plugins: cov-6.0.0, anyio-4.6.2.post1
-collecting ... collected 41 items
+collecting ... collected 34 items
 
-tests/test_analysis.py::test_transfer_function_initialization PASSED     [  2%]
-tests/test_analysis.py::test_matter_transfer_function ERROR              [  4%]
-tests/test_analysis.py::test_radiation_transfer_function ERROR           [  7%]
-tests/test_analysis.py::test_power_spectrum_computation ERROR            [  9%]
-tests/test_analysis.py::test_mcmc_analysis ERROR                         [ 12%]
-tests/test_analysis.py::test_mcmc_convergence ERROR                      [ 14%]
-tests/test_analysis.py::test_numerical_stability ERROR                   [ 17%]
-tests/test_analysis.py::test_acoustic_peaks[100] ERROR                   [ 19%]
-tests/test_analysis.py::test_acoustic_peaks[500] ERROR                   [ 21%]
-tests/test_analysis.py::test_acoustic_peaks[1000] ERROR                  [ 24%]
-tests/test_analysis.py::test_error_propagation ERROR                     [ 26%]
-tests/test_cosmology.py::test_lcdm_initialization PASSED                 [ 29%]
-tests/test_cosmology.py::test_wcdm_initialization PASSED                 [ 31%]
-tests/test_cosmology.py::test_hubble_parameter[0.0] PASSED               [ 34%]
-tests/test_cosmology.py::test_hubble_parameter[0.5] PASSED               [ 36%]
-tests/test_cosmology.py::test_hubble_parameter[1.0] PASSED               [ 39%]
-tests/test_cosmology.py::test_hubble_parameter[2.0] PASSED               [ 41%]
-tests/test_cosmology.py::test_hubble_parameter_array FAILED              [ 43%]
-tests/test_cosmology.py::test_angular_diameter_distance FAILED           [ 46%]
-tests/test_cosmology.py::test_lcdm_wcdm_consistency FAILED               [ 48%]
-tests/test_cosmology.py::test_invalid_parameters FAILED                  [ 51%]
-tests/test_cosmology.py::test_omega_m_computation FAILED                 [ 53%]
-tests/test_cosmology.py::test_age_of_universe FAILED                     [ 56%]
-tests/test_cosmology.py::test_physical_constraints[LCDM-params0] FAILED  [ 58%]
-tests/test_cosmology.py::test_physical_constraints[wCDM-params1] PASSED  [ 60%]
-tests/test_cosmology.py::test_error_handling FAILED                      [ 63%]
-tests/test_visualization.py::test_plotter_initialization PASSED          [ 65%]
-tests/test_visualization.py::test_power_spectra_plot ERROR               [ 68%]
-tests/test_visualization.py::test_residuals_plot ERROR                   [ 70%]
-tests/test_visualization.py::test_corner_plot FAILED                     [ 73%]
-tests/test_visualization.py::test_chain_evolution FAILED                 [ 75%]
-tests/test_visualization.py::test_autocorrelation_plot FAILED            [ 78%]
-tests/test_visualization.py::test_convergence_metrics FAILED             [ 80%]
-tests/test_visualization.py::test_diagnostic_summary FAILED              [ 82%]
-tests/test_visualization.py::test_save_publication_plots ERROR           [ 85%]
-tests/test_visualization.py::test_style_consistency PASSED               [ 87%]
-tests/test_visualization.py::test_plot_types[power_spectra] ERROR        [ 90%]
-tests/test_visualization.py::test_plot_types[residuals] ERROR            [ 92%]
-tests/test_visualization.py::test_plot_types[corner] ERROR               [ 95%]
-tests/test_visualization.py::test_plot_types[chain_evolution] ERROR      [ 97%]
-tests/test_visualization.py::test_plot_types[convergence] ERROR          [100%]
+tests/test_analysis.py::test_matter_transfer_function FAILED             [  2%]
+tests/test_analysis.py::test_power_spectrum_computation FAILED           [  5%]
+tests/test_analysis.py::test_mcmc_analysis FAILED                        [  8%]
+tests/test_analysis.py::test_mcmc_convergence FAILED                     [ 11%]
+tests/test_analysis.py::test_numerical_stability FAILED                  [ 14%]
+tests/test_analysis.py::test_acoustic_peaks[100] FAILED                  [ 17%]
+tests/test_analysis.py::test_acoustic_peaks[500] FAILED                  [ 20%]
+tests/test_analysis.py::test_acoustic_peaks[1000] FAILED                 [ 23%]
+tests/test_analysis.py::test_error_propagation FAILED                    [ 26%]
+tests/test_cosmology.py::test_hubble_parameter_array FAILED              [ 29%]
+tests/test_cosmology.py::test_lcdm_wcdm_consistency FAILED               [ 32%]
+tests/test_cosmology.py::test_invalid_parameters FAILED                  [ 35%]
+tests/test_cosmology.py::test_physical_constraints[LCDM-params0] FAILED  [ 38%]
+tests/test_cosmology.py::test_physical_constraints[wCDM-params1] PASSED  [ 41%]
+tests/test_cosmology.py::test_lcdm_initialization PASSED                 [ 44%]
+tests/test_cosmology.py::test_wcdm_initialization PASSED                 [ 47%]
+tests/test_cosmology.py::test_hubble_parameter[0.0] PASSED               [ 50%]
+tests/test_cosmology.py::test_hubble_parameter[0.5] PASSED               [ 52%]
+tests/test_cosmology.py::test_hubble_parameter[1.0] PASSED               [ 55%]
+tests/test_cosmology.py::test_hubble_parameter[2.0] PASSED               [ 58%]
+tests/test_cosmology.py::test_angular_diameter_distance FAILED           [ 61%]
+tests/test_cosmology.py::test_omega_m_computation FAILED                 [ 64%]
+tests/test_cosmology.py::test_age_of_universe FAILED                     [ 67%]
+tests/test_cosmology.py::test_error_handling FAILED                      [ 70%]
+tests/test_visualization.py::test_power_spectra_plot FAILED              [ 73%]
+tests/test_visualization.py::test_corner_plot FAILED                     [ 76%]
+tests/test_visualization.py::test_chain_evolution FAILED                 [ 79%]
+tests/test_visualization.py::test_convergence_metrics FAILED             [ 82%]
+tests/test_visualization.py::test_save_publication_plots FAILED          [ 85%]
+tests/test_visualization.py::test_plot_types[power_spectra] FAILED       [ 88%]
+tests/test_visualization.py::test_plot_types[residuals] FAILED           [ 91%]
+tests/test_visualization.py::test_plot_types[corner] FAILED              [ 94%]
+tests/test_visualization.py::test_plot_types[chain_evolution] FAILED     [ 97%]
+tests/test_visualization.py::test_plot_types[convergence] FAILED         [100%]
 
-==================================== ERRORS ====================================
-_______________ ERROR at setup of test_matter_transfer_function ________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 32
-  def test_matter_transfer_function(transfer_calculator, fiducial_params):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:32
-______________ ERROR at setup of test_radiation_transfer_function ______________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 44
-  def test_radiation_transfer_function(transfer_calculator, fiducial_params):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:44
-______________ ERROR at setup of test_power_spectrum_computation _______________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 54
-  def test_power_spectrum_computation(power_calculator, fiducial_params, mock_cmb_data):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:54
-_____________________ ERROR at setup of test_mcmc_analysis _____________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 69
-  def test_mcmc_analysis(mock_cmb_data, fiducial_params):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:69
-___________________ ERROR at setup of test_mcmc_convergence ____________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 92
-  @pytest.mark.slow
-  def test_mcmc_convergence(mock_cmb_data, fiducial_params):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:92
-__________________ ERROR at setup of test_numerical_stability __________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 123
-  def test_numerical_stability(transfer_calculator, power_calculator, fiducial_params):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:123
-__________________ ERROR at setup of test_acoustic_peaks[100] __________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 142
-  @pytest.mark.parametrize("ell", [100, 500, 1000])
-  def test_acoustic_peaks(power_calculator, fiducial_params, ell):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:142
-__________________ ERROR at setup of test_acoustic_peaks[500] __________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 142
-  @pytest.mark.parametrize("ell", [100, 500, 1000])
-  def test_acoustic_peaks(power_calculator, fiducial_params, ell):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:142
-_________________ ERROR at setup of test_acoustic_peaks[1000] __________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 142
-  @pytest.mark.parametrize("ell", [100, 500, 1000])
-  def test_acoustic_peaks(power_calculator, fiducial_params, ell):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:142
-___________________ ERROR at setup of test_error_propagation ___________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py, line 155
-  def test_error_propagation(power_calculator, fiducial_params):
-E       fixture 'fiducial_params' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, doctest_namespace, monkeypatch, no_cover, power_calculator, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory, transfer_calculator
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:155
-__________________ ERROR at setup of test_power_spectra_plot ___________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 32
-  def test_power_spectra_plot(plotter, mock_cmb_data):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:32
-____________________ ERROR at setup of test_residuals_plot _____________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 59
-  def test_residuals_plot(plotter, mock_cmb_data):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:59
-________________ ERROR at setup of test_save_publication_plots _________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 170
-  def test_save_publication_plots(plotter, mock_cmb_data, tmp_path):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:170
-_______________ ERROR at setup of test_plot_types[power_spectra] _______________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 206
-  @pytest.mark.parametrize("fig_type", [
-      "power_spectra",
-      "residuals",
-      "corner",
-      "chain_evolution",
-      "convergence"
-  ])
-  def test_plot_types(plotter, diagnostics, mock_cmb_data, fig_type):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:206
-_________________ ERROR at setup of test_plot_types[residuals] _________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 206
-  @pytest.mark.parametrize("fig_type", [
-      "power_spectra",
-      "residuals",
-      "corner",
-      "chain_evolution",
-      "convergence"
-  ])
-  def test_plot_types(plotter, diagnostics, mock_cmb_data, fig_type):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:206
-__________________ ERROR at setup of test_plot_types[corner] ___________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 206
-  @pytest.mark.parametrize("fig_type", [
-      "power_spectra",
-      "residuals",
-      "corner",
-      "chain_evolution",
-      "convergence"
-  ])
-  def test_plot_types(plotter, diagnostics, mock_cmb_data, fig_type):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:206
-______________ ERROR at setup of test_plot_types[chain_evolution] ______________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 206
-  @pytest.mark.parametrize("fig_type", [
-      "power_spectra",
-      "residuals",
-      "corner",
-      "chain_evolution",
-      "convergence"
-  ])
-  def test_plot_types(plotter, diagnostics, mock_cmb_data, fig_type):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:206
-________________ ERROR at setup of test_plot_types[convergence] ________________
-file /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py, line 206
-  @pytest.mark.parametrize("fig_type", [
-      "power_spectra",
-      "residuals",
-      "corner",
-      "chain_evolution",
-      "convergence"
-  ])
-  def test_plot_types(plotter, diagnostics, mock_cmb_data, fig_type):
-E       fixture 'mock_cmb_data' not found
->       available fixtures: anyio_backend, anyio_backend_name, anyio_backend_options, cache, capfd, capfdbinary, caplog, capsys, capsysbinary, cov, diagnostics, doctest_namespace, monkeypatch, no_cover, plotter, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
->       use 'pytest --fixtures [testpath]' for help on them.
-
-/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_visualization.py:206
 =================================== FAILURES ===================================
+________________________ test_matter_transfer_function _________________________
+
+transfer_calculator = <cmb_analysis.analysis.transfer.CosmicTransferFunctions object at 0x10d4bc9e0>
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+
+    def test_matter_transfer_function(transfer_calculator, fiducial_params):
+        """Test matter transfer function computation."""
+        k = np.logspace(-4, 2, 100)
+        T = transfer_calculator.matter_transfer(k, fiducial_params)
+    
+        # Basic sanity checks
+        assert len(T) == len(k)
+        assert np.all(np.isfinite(T))
+        assert np.all(np.abs(T) <= 1.0)  # Transfer function should be normalized
+>       assert np.isclose(T[0], 1.0, rtol=1e-2)  # Should approach 1 at large scales
+E       assert np.False_
+E        +  where np.False_ = <function isclose at 0x103f8df30>(np.float64(0.005344749466459605), 1.0, rtol=0.01)
+E        +    where <function isclose at 0x103f8df30> = np.isclose
+
+tests/test_analysis.py:18: AssertionError
+_______________________ test_power_spectrum_computation ________________________
+
+power_calculator = <cmb_analysis.analysis.power_spectrum.PowerSpectrumCalculator object at 0x10d4bc050>
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+
+    def test_power_spectrum_computation(power_calculator, fiducial_params, mock_cmb_data):
+        """Test power spectrum computation."""
+        # Compute spectra
+        cl_tt, cl_ee, cl_te = power_calculator.compute_all_spectra(fiducial_params)
+    
+        # Check array sizes
+>       assert len(cl_tt) == len(mock_cmb_data['ell'])
+E       assert 2499 == 2498
+E        +  where 2499 = len(array([nan, nan, nan, ..., nan, nan, nan]))
+E        +  and   2498 = len(array([   2,    3,    4, ..., 2497, 2498, 2499]))
+
+tests/test_analysis.py:27: AssertionError
+______________________________ test_mcmc_analysis ______________________________
+
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+
+    def test_mcmc_analysis(mock_cmb_data, fiducial_params):
+        """Test basic MCMC setup."""
+        from cmb_analysis.analysis import MCMCAnalysis
+    
+>       analyzer = MCMCAnalysis(mock_cmb_data, fiducial_params)
+E       TypeError: MCMCAnalysis.__init__() missing 1 required positional argument: 'param_info'
+
+tests/test_analysis.py:42: TypeError
+____________________________ test_mcmc_convergence _____________________________
+
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+
+    @pytest.mark.slow
+    def test_mcmc_convergence(mock_cmb_data, fiducial_params):
+        """Test MCMC convergence diagnostics."""
+        from cmb_analysis.analysis import MCMCAnalysis
+    
+>       analyzer = MCMCAnalysis(mock_cmb_data, fiducial_params)
+E       TypeError: MCMCAnalysis.__init__() missing 1 required positional argument: 'param_info'
+
+tests/test_analysis.py:54: TypeError
+___________________________ test_numerical_stability ___________________________
+
+transfer_calculator = <cmb_analysis.analysis.transfer.CosmicTransferFunctions object at 0x10d4bea20>
+power_calculator = <cmb_analysis.analysis.power_spectrum.PowerSpectrumCalculator object at 0x10d4be930>
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+
+    def test_numerical_stability(transfer_calculator, power_calculator, fiducial_params):
+        """Test numerical stability of computations."""
+        # Test with extreme parameter values
+        extreme_params = fiducial_params.copy()
+        extreme_params['H0'] = 80.0
+        extreme_params['tau'] = 0.01
+    
+        k = np.logspace(-4, 2, 100)
+        T = transfer_calculator.matter_transfer(k, extreme_params)
+        assert np.all(np.isfinite(T))
+    
+        cl_tt, cl_ee, cl_te = power_calculator.compute_all_spectra(extreme_params)
+>       assert np.all(np.isfinite(cl_tt))
+E       AssertionError: assert np.False_
+E        +  where np.False_ = <function all at 0x103f818b0>(array([False, False, False, ..., False, False, False]))
+E        +    where <function all at 0x103f818b0> = np.all
+E        +    and   array([False, False, False, ..., False, False, False]) = <ufunc 'isfinite'>(array([nan, nan, nan, ..., nan, nan, nan]))
+E        +      where <ufunc 'isfinite'> = np.isfinite
+
+tests/test_analysis.py:78: AssertionError
+___________________________ test_acoustic_peaks[100] ___________________________
+
+power_calculator = <cmb_analysis.analysis.power_spectrum.PowerSpectrumCalculator object at 0x10d4bf530>
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+ell = 100
+
+    @pytest.mark.parametrize("ell", [100, 500, 1000])
+    def test_acoustic_peaks(power_calculator, fiducial_params, ell):
+        """Test acoustic peak locations and amplitudes."""
+        cl_tt, _, _ = power_calculator.compute_all_spectra(fiducial_params)
+    
+        # Convert to D_l = l(l+1)C_l/(2π)
+        dl_tt = ell * (ell + 1) * cl_tt[ell] / (2 * np.pi)
+    
+>       assert dl_tt > 0
+E       assert np.float64(nan) > 0
+
+tests/test_analysis.py:91: AssertionError
+___________________________ test_acoustic_peaks[500] ___________________________
+
+power_calculator = <cmb_analysis.analysis.power_spectrum.PowerSpectrumCalculator object at 0x10d56c050>
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+ell = 500
+
+    @pytest.mark.parametrize("ell", [100, 500, 1000])
+    def test_acoustic_peaks(power_calculator, fiducial_params, ell):
+        """Test acoustic peak locations and amplitudes."""
+        cl_tt, _, _ = power_calculator.compute_all_spectra(fiducial_params)
+    
+        # Convert to D_l = l(l+1)C_l/(2π)
+        dl_tt = ell * (ell + 1) * cl_tt[ell] / (2 * np.pi)
+    
+>       assert dl_tt > 0
+E       assert np.float64(nan) > 0
+
+tests/test_analysis.py:91: AssertionError
+__________________________ test_acoustic_peaks[1000] ___________________________
+
+power_calculator = <cmb_analysis.analysis.power_spectrum.PowerSpectrumCalculator object at 0x10d56c890>
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+ell = 1000
+
+    @pytest.mark.parametrize("ell", [100, 500, 1000])
+    def test_acoustic_peaks(power_calculator, fiducial_params, ell):
+        """Test acoustic peak locations and amplitudes."""
+        cl_tt, _, _ = power_calculator.compute_all_spectra(fiducial_params)
+    
+        # Convert to D_l = l(l+1)C_l/(2π)
+        dl_tt = ell * (ell + 1) * cl_tt[ell] / (2 * np.pi)
+    
+>       assert dl_tt > 0
+E       assert np.float64(nan) > 0
+
+tests/test_analysis.py:91: AssertionError
+____________________________ test_error_propagation ____________________________
+
+power_calculator = <cmb_analysis.analysis.power_spectrum.PowerSpectrumCalculator object at 0x10d56cec0>
+fiducial_params = {'H0': 67.32, 'ln10As': 3.044, 'ns': 0.9649, 'omega_b': 0.02237, ...}
+
+    def test_error_propagation(power_calculator, fiducial_params):
+        """Test error handling and propagation."""
+        # Test with invalid parameters
+        invalid_params = fiducial_params.copy()
+        invalid_params['H0'] = -70  # Invalid negative value
+    
+>       with pytest.raises(ValueError):
+E       Failed: DID NOT RAISE <class 'ValueError'>
+
+tests/test_analysis.py:101: Failed
 _________________________ test_hubble_parameter_array __________________________
 
     def test_hubble_parameter_array():
@@ -241,14 +210,14 @@ _________________________ test_hubble_parameter_array __________________________
         z = np.linspace(0, 2, 100)
 >       H = model.H(z, fiducial_params)
 
-tests/test_cosmology.py:61: 
+tests/test_cosmology.py:117: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 self = LCDM(params={H0: (67.320, 0.540), omega_b: (0.022, 0.000), omega_cdm: (0.120, 0.001), tau: (0.054, 0.007), ns: (0.965, 0.004), ln10As: (3.044, 0.014)})
 z = array([0.        , 0.02020202, 0.04040404, 0.06060606, 0.08080808,
        0.1010101 , 0.12121212, 0.14141414, 0.161616...82, 1.83838384, 1.85858586, 1.87878788, 1.8989899 ,
        1.91919192, 1.93939394, 1.95959596, 1.97979798, 2.        ])
-params = <function fiducial_params at 0x111e40680>
+params = <function fiducial_params at 0x10d43e3e0>
 
     def H(self, z: Union[float, ArrayLike], params: Dict[str, float]) -> Union[float, ArrayLike]:
         """
@@ -275,47 +244,6 @@ params = <function fiducial_params at 0x111e40680>
 E       TypeError: 'function' object is not subscriptable
 
 cmb_analysis/cosmology/lcdm.py:69: TypeError
-________________________ test_angular_diameter_distance ________________________
-
-    def test_angular_diameter_distance():
-        """Test angular diameter distance computation."""
-        model = LCDM()
-        z = 1089.8  # Last scattering surface
->       D_A = model.angular_diameter_distance(z, fiducial_params)
-
-tests/test_cosmology.py:72: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-cmb_analysis/cosmology/lcdm.py:94: in angular_diameter_distance
-    if not self.validate_parameters(params):
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-self = LCDM(params={H0: (67.320, 0.540), omega_b: (0.022, 0.000), omega_cdm: (0.120, 0.001), tau: (0.054, 0.007), ns: (0.965, 0.004), ln10As: (3.044, 0.014)})
-params = <function fiducial_params at 0x111e40680>
-
-    def validate_parameters(self, params: Dict[str, float]) -> bool:
-        """
-        Validate cosmological parameters against physical bounds.
-    
-        Parameters
-        ----------
-        params : dict
-            Cosmological parameters to validate
-    
-        Returns
-        -------
-        bool
-            True if parameters are valid, False otherwise
-    
-        Raises
-        ------
-        ValueError
-            If required parameters are missing
-        """
-        required_params = set(self.param_info.keys())
->       provided_params = set(params.keys())
-E       AttributeError: 'function' object has no attribute 'keys'
-
-cmb_analysis/cosmology/base.py:141: AttributeError
 __________________________ test_lcdm_wcdm_consistency __________________________
 
     def test_lcdm_wcdm_consistency():
@@ -329,7 +257,7 @@ __________________________ test_lcdm_wcdm_consistency __________________________
 >       wcdm_params = fiducial_params.copy()
 E       AttributeError: 'function' object has no attribute 'copy'
 
-tests/test_cosmology.py:87: AttributeError
+tests/test_cosmology.py:143: AttributeError
 ___________________________ test_invalid_parameters ____________________________
 
     def test_invalid_parameters():
@@ -339,48 +267,7 @@ ___________________________ test_invalid_parameters ____________________________
 >       invalid_params = fiducial_params.copy()
 E       AttributeError: 'function' object has no attribute 'copy'
 
-tests/test_cosmology.py:100: AttributeError
-___________________________ test_omega_m_computation ___________________________
-
-    def test_omega_m_computation():
-        """Test total matter density computation."""
-        model = LCDM()
->       omega_m = fiducial_params['omega_b'] + fiducial_params['omega_cdm']
-E       TypeError: 'function' object is not subscriptable
-
-tests/test_cosmology.py:110: TypeError
-_____________________________ test_age_of_universe _____________________________
-
-    def test_age_of_universe():
-        """Test age of universe computation."""
-        model = LCDM()
->       age = model.age_of_universe(fiducial_params)
-
-tests/test_cosmology.py:121: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-self = LCDM(params={H0: (67.320, 0.540), omega_b: (0.022, 0.000), omega_cdm: (0.120, 0.001), tau: (0.054, 0.007), ns: (0.965, 0.004), ln10As: (3.044, 0.014)})
-params = <function fiducial_params at 0x111e40680>
-
-    def age_of_universe(self, params: Dict[str, float]) -> float:
-        """
-        Compute the age of the universe in Gyr.
-    
-        Parameters
-        ----------
-        params : dict
-            Cosmological parameters
-    
-        Returns
-        -------
-        float
-            Age of the universe in Gyr
-        """
-        # Convert H0 to s^-1
->       H0 = params['H0'] * 1000 / self.Mpc
-E       TypeError: 'function' object is not subscriptable
-
-cmb_analysis/cosmology/lcdm.py:150: TypeError
+tests/test_cosmology.py:156: AttributeError
 ___________________ test_physical_constraints[LCDM-params0] ____________________
 
 cosmology = <class 'cmb_analysis.cosmology.lcdm.LCDM'>
@@ -403,7 +290,7 @@ params = {'H0': 70, 'omega_b': 0.0486, 'omega_cdm': 0.2589}
 >       D_A = np.array([model.angular_diameter_distance(zi, params)
                        for zi in z[1:]])
 
-tests/test_cosmology.py:142: 
+tests/test_cosmology.py:198: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 cmb_analysis/cosmology/lcdm.py:94: in angular_diameter_distance
     if not self.validate_parameters(params):
@@ -437,9 +324,91 @@ params = {'H0': 70, 'omega_b': 0.0486, 'omega_cdm': 0.2589}
         if not required_params.issubset(provided_params):
             missing = required_params - provided_params
 >           raise ValueError(f"Missing required parameters: {missing}")
-E           ValueError: Missing required parameters: {'ns', 'ln10As', 'tau'}
+E           ValueError: Missing required parameters: {'ns', 'tau', 'ln10As'}
 
 cmb_analysis/cosmology/base.py:145: ValueError
+________________________ test_angular_diameter_distance ________________________
+
+    def test_angular_diameter_distance():
+        """Test angular diameter distance computation."""
+        model = LCDM()
+        z = 1089.8  # Last scattering surface
+>       D_A = model.angular_diameter_distance(z, fiducial_params)
+
+tests/test_cosmology.py:128: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cmb_analysis/cosmology/lcdm.py:94: in angular_diameter_distance
+    if not self.validate_parameters(params):
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = LCDM(params={H0: (67.320, 0.540), omega_b: (0.022, 0.000), omega_cdm: (0.120, 0.001), tau: (0.054, 0.007), ns: (0.965, 0.004), ln10As: (3.044, 0.014)})
+params = <function fiducial_params at 0x10d43e3e0>
+
+    def validate_parameters(self, params: Dict[str, float]) -> bool:
+        """
+        Validate cosmological parameters against physical bounds.
+    
+        Parameters
+        ----------
+        params : dict
+            Cosmological parameters to validate
+    
+        Returns
+        -------
+        bool
+            True if parameters are valid, False otherwise
+    
+        Raises
+        ------
+        ValueError
+            If required parameters are missing
+        """
+        required_params = set(self.param_info.keys())
+>       provided_params = set(params.keys())
+E       AttributeError: 'function' object has no attribute 'keys'
+
+cmb_analysis/cosmology/base.py:141: AttributeError
+___________________________ test_omega_m_computation ___________________________
+
+    def test_omega_m_computation():
+        """Test total matter density computation."""
+        model = LCDM()
+>       omega_m = fiducial_params['omega_b'] + fiducial_params['omega_cdm']
+E       TypeError: 'function' object is not subscriptable
+
+tests/test_cosmology.py:166: TypeError
+_____________________________ test_age_of_universe _____________________________
+
+    def test_age_of_universe():
+        """Test age of universe computation."""
+        model = LCDM()
+>       age = model.age_of_universe(fiducial_params)
+
+tests/test_cosmology.py:177: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = LCDM(params={H0: (67.320, 0.540), omega_b: (0.022, 0.000), omega_cdm: (0.120, 0.001), tau: (0.054, 0.007), ns: (0.965, 0.004), ln10As: (3.044, 0.014)})
+params = <function fiducial_params at 0x10d43e3e0>
+
+    def age_of_universe(self, params: Dict[str, float]) -> float:
+        """
+        Compute the age of the universe in Gyr.
+    
+        Parameters
+        ----------
+        params : dict
+            Cosmological parameters
+    
+        Returns
+        -------
+        float
+            Age of the universe in Gyr
+        """
+        # Convert H0 to s^-1
+>       H0 = params['H0'] * 1000 / self.Mpc
+E       TypeError: 'function' object is not subscriptable
+
+cmb_analysis/cosmology/lcdm.py:150: TypeError
 _____________________________ test_error_handling ______________________________
 
     def test_error_handling():
@@ -450,7 +419,7 @@ _____________________________ test_error_handling ______________________________
         with pytest.raises(ValueError):
 >           model.H(1.0, {'H0': 70})
 
-tests/test_cosmology.py:158: 
+tests/test_cosmology.py:214: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 self = LCDM(params={H0: (67.320, 0.540), omega_b: (0.022, 0.000), omega_cdm: (0.120, 0.001), tau: (0.054, 0.007), ns: (0.965, 0.004), ln10As: (3.044, 0.014)})
@@ -482,21 +451,98 @@ z = 1.0, params = {'H0': 70}
 E       KeyError: 'omega_b'
 
 cmb_analysis/cosmology/lcdm.py:70: KeyError
+___________________________ test_power_spectra_plot ____________________________
+
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x10d4bcaa0>
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+
+    def test_power_spectra_plot(plotter, mock_cmb_data):
+        """Test power spectra plotting functionality."""
+        theory = {
+            'cl_tt': mock_cmb_data['cl_tt'],
+            'cl_te': mock_cmb_data['cl_te'],
+            'cl_ee': mock_cmb_data['cl_ee']
+        }
+        data = theory.copy()
+        errors = {
+            'cl_tt': mock_cmb_data['noise_tt'],
+            'cl_te': mock_cmb_data['noise_te'],
+            'cl_ee': mock_cmb_data['noise_ee']
+        }
+    
+>       fig = plotter.plot_power_spectra(theory, data, errors)
+
+tests/test_visualization.py:25: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cmb_analysis/visualization/plotting.py:94: in plot_power_spectra
+    plt.tight_layout()
+venv/lib/python3.12/site-packages/matplotlib/pyplot.py:2801: in tight_layout
+    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
+venv/lib/python3.12/site-packages/matplotlib/figure.py:3545: in tight_layout
+    engine.execute(self)
+venv/lib/python3.12/site-packages/matplotlib/layout_engine.py:183: in execute
+    kwargs = get_tight_layout_figure(
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:266: in get_tight_layout_figure
+    kwargs = _auto_adjust_subplotpars(fig, renderer,
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:82: in _auto_adjust_subplotpars
+    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:457: in wrapper
+    return func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/axes/_base.py:4476: in get_tightbbox
+    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1370: in get_tightbbox
+    ticks_to_draw = self._update_ticks()
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1300: in _update_ticks
+    major_locs = self.get_majorticklocs()
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1531: in get_majorticklocs
+    return self.major.locator()
+venv/lib/python3.12/site-packages/matplotlib/ticker.py:2350: in __call__
+    return self.tick_values(vmin, vmax)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <matplotlib.ticker.LogLocator object at 0x10d2cbfe0>
+vmin = np.float64(inf), vmax = np.float64(0.05500000000000001)
+
+    def tick_values(self, vmin, vmax):
+        if self.numticks == 'auto':
+            if self.axis is not None:
+                numticks = np.clip(self.axis.get_tick_space(), 2, 9)
+            else:
+                numticks = 9
+        else:
+            numticks = self.numticks
+    
+        b = self._base
+        if vmin <= 0.0:
+            if self.axis is not None:
+                vmin = self.axis.get_minpos()
+    
+            if vmin <= 0.0 or not np.isfinite(vmin):
+>               raise ValueError(
+                    "Data has no positive values, and therefore cannot be log-scaled.")
+E               ValueError: Data has no positive values, and therefore cannot be log-scaled.
+
+venv/lib/python3.12/site-packages/matplotlib/ticker.py:2367: ValueError
 _______________________________ test_corner_plot _______________________________
 
-plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x1154b6480>
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x10d56e630>
+mock_chain = array([[[6.76185433e+01, 2.25728421e-02, 1.19765556e-01, 5.37681895e-02,
+         9.74692775e-01, 3.07080667e+00],
+   ...],
+        [6.78766499e+01, 2.24444632e-02, 1.21012345e-01, 5.34071015e-02,
+         9.66101160e-01, 3.03286784e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
 
-    def test_corner_plot(plotter):
+    def test_corner_plot(plotter, mock_chain, param_names):
         """Test corner plot functionality."""
-        # Create mock MCMC samples
-        n_samples = 1000
-        n_params = 3
-        samples = np.random.normal(size=(n_samples, n_params))
-        labels = ['param1', 'param2', 'param3']
-    
->       fig = plotter.plot_corner(samples, labels)
+>       fig = plotter.plot_corner(mock_chain.reshape(-1, mock_chain.shape[2]),
+                                  param_names)
 
-tests/test_visualization.py:94: 
+tests/test_visualization.py:32: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 cmb_analysis/visualization/plotting.py:202: in plot_corner
     fig = corner.corner(
@@ -522,6 +568,34 @@ venv/lib/python3.12/site-packages/matplotlib/cm.py:575: in set_norm
     self.norm = norm
 venv/lib/python3.12/site-packages/matplotlib/cm.py:559: in norm
     self.changed()
+venv/lib/python3.12/site-packages/matplotlib/contour.py:1110: in changed
+    self.norm.autoscale_None(self.levels)
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1451: in autoscale_None
+    self.vmin = A.min()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1294: in vmin
+    self._changed()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1322: in _changed
+    self.callbacks.process('changed')
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:303: in process
+    self.exception_handler(exc)
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:87: in _exception_printer
+    raise exc
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:298: in process
+    func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/contour.py:1110: in changed
+    self.norm.autoscale_None(self.levels)
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1453: in autoscale_None
+    self.vmax = A.max()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1305: in vmax
+    self._changed()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1322: in _changed
+    self.callbacks.process('changed')
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:303: in process
+    self.exception_handler(exc)
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:87: in _exception_printer
+    raise exc
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:298: in process
+    func(*args, **kwargs)
 venv/lib/python3.12/site-packages/matplotlib/contour.py:1112: in changed
     self.update_scalarmappable()
 venv/lib/python3.12/site-packages/matplotlib/collections.py:920: in update_scalarmappable
@@ -620,61 +694,10 @@ c = 0.00392156862745098, alpha = None
 E           ValueError: Invalid RGBA argument: 0.00392156862745098
 
 venv/lib/python3.12/site-packages/matplotlib/colors.py:398: ValueError
------------------------------ Captured stderr call -----------------------------
-Traceback (most recent call last):
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/cbook.py", line 298, in process
-    func(*args, **kwargs)
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/contour.py", line 1112, in changed
-    self.update_scalarmappable()
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/collections.py", line 920, in update_scalarmappable
-    self._mapped_colors = self.to_rgba(self._A, self._alpha)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/cm.py", line 431, in to_rgba
-    rgba = self.cmap(x, alpha=alpha, bytes=bytes)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 737, in __call__
-    self._init()
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 1188, in _init
-    self._lut[:-3] = to_rgba_array(self.colors)
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 510, in to_rgba_array
-    rgba = np.array([to_rgba(cc) for cc in c])
-                     ^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 314, in to_rgba
-    rgba = _to_rgba_no_colorcycle(c, alpha)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 398, in _to_rgba_no_colorcycle
-    raise ValueError(f"Invalid RGBA argument: {orig_c!r}")
-ValueError: Invalid RGBA argument: 0.00392156862745098
-Traceback (most recent call last):
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/cbook.py", line 298, in process
-    func(*args, **kwargs)
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/contour.py", line 1112, in changed
-    self.update_scalarmappable()
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/collections.py", line 920, in update_scalarmappable
-    self._mapped_colors = self.to_rgba(self._A, self._alpha)
-                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/cm.py", line 431, in to_rgba
-    rgba = self.cmap(x, alpha=alpha, bytes=bytes)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 737, in __call__
-    self._init()
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 1188, in _init
-    self._lut[:-3] = to_rgba_array(self.colors)
-                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 510, in to_rgba_array
-    rgba = np.array([to_rgba(cc) for cc in c])
-                     ^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 314, in to_rgba
-    rgba = _to_rgba_no_colorcycle(c, alpha)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/venv/lib/python3.12/site-packages/matplotlib/colors.py", line 398, in _to_rgba_no_colorcycle
-    raise ValueError(f"Invalid RGBA argument: {orig_c!r}")
-ValueError: Invalid RGBA argument: 0.00392156862745098
 _____________________________ test_chain_evolution _____________________________
 
 cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpd7yz5cbk', 'ebddbc55302063cddd8b76d385f18547.tex']
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmph73c9gnj', '881c8c80c0be83c212df7c7a905e568c.tex']
 tex = 'lp'
 
     @classmethod
@@ -696,11 +719,11 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 self = <Popen: returncode: 255 args: ['latex', '-interaction=nonstopmode', '--halt-...>
-args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpd7yz5cbk', 'ebddbc55302063cddd8b76d385f18547.tex']
+args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmph73c9gnj', '881c8c80c0be83c212df7c7a905e568c.tex']
 executable = b'latex', preexec_fn = None, close_fds = True, pass_fds = ()
-cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/eb/dd'), env = None
+cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/88/1c'), env = None
 startupinfo = None, creationflags = 0, shell = False, p2cread = -1
-p2cwrite = -1, c2pread = 12, c2pwrite = 13, errread = -1, errwrite = 13
+p2cwrite = -1, c2pread = 11, c2pwrite = 12, errread = -1, errwrite = 12
 restore_signals = True, gid = None, gids = None, uid = None, umask = -1
 start_new_session = False, process_group = -1
 
@@ -875,20 +898,19 @@ E                   FileNotFoundError: [Errno 2] No such file or directory: 'lat
 
 The above exception was the direct cause of the following exception:
 
-diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x1154b72f0>
+diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x10dd8ecf0>
+mock_chain = array([[[6.74308676e+01, 2.26664340e-02, 1.21253544e-01, 5.47512470e-02,
+         9.60958840e-01, 3.00973126e+00],
+   ...],
+        [6.68531101e+01, 2.19249451e-02, 1.21325349e-01, 5.43674164e-02,
+         9.64969720e-01, 3.08512353e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
 
-    def test_chain_evolution(diagnostics):
+    def test_chain_evolution(diagnostics, mock_chain, param_names):
         """Test MCMC chain evolution plotting."""
-        # Create mock chain
-        n_steps = 1000
-        n_walkers = 32
-        n_params = 3
-        chain = np.random.normal(size=(n_steps, n_walkers, n_params))
-        param_names = ['param1', 'param2', 'param3']
-    
->       fig = diagnostics.plot_chain_evolution(chain, param_names)
+>       fig = diagnostics.plot_chain_evolution(mock_chain, param_names)
 
-tests/test_visualization.py:111: 
+tests/test_visualization.py:40: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 cmb_analysis/visualization/diagnostics.py:65: in plot_chain_evolution
     plt.tight_layout()
@@ -937,290 +959,7 @@ venv/lib/python3.12/site-packages/matplotlib/texmanager.py:295: in make_dvi
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpd7yz5cbk', 'ebddbc55302063cddd8b76d385f18547.tex']
-tex = 'lp'
-
-    @classmethod
-    def _run_checked_subprocess(cls, command, tex, *, cwd=None):
-        _log.debug(cbook._pformat_subprocess(command))
-        try:
-            report = subprocess.check_output(
-                command, cwd=cwd if cwd is not None else cls._texcache,
-                stderr=subprocess.STDOUT)
-        except FileNotFoundError as exc:
->           raise RuntimeError(
-                f'Failed to process string with tex because {command[0]} '
-                'could not be found') from exc
-E           RuntimeError: Failed to process string with tex because latex could not be found
-
-venv/lib/python3.12/site-packages/matplotlib/texmanager.py:254: RuntimeError
-__________________________ test_autocorrelation_plot ___________________________
-
-cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmp8ckrz88y', 'ebddbc55302063cddd8b76d385f18547.tex']
-tex = 'lp'
-
-    @classmethod
-    def _run_checked_subprocess(cls, command, tex, *, cwd=None):
-        _log.debug(cbook._pformat_subprocess(command))
-        try:
->           report = subprocess.check_output(
-                command, cwd=cwd if cwd is not None else cls._texcache,
-                stderr=subprocess.STDOUT)
-
-venv/lib/python3.12/site-packages/matplotlib/texmanager.py:250: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:466: in check_output
-    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
-/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:548: in run
-    with Popen(*popenargs, **kwargs) as process:
-/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:1026: in __init__
-    self._execute_child(args, executable, preexec_fn, close_fds,
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-self = <Popen: returncode: 255 args: ['latex', '-interaction=nonstopmode', '--halt-...>
-args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmp8ckrz88y', 'ebddbc55302063cddd8b76d385f18547.tex']
-executable = b'latex', preexec_fn = None, close_fds = True, pass_fds = ()
-cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/eb/dd'), env = None
-startupinfo = None, creationflags = 0, shell = False, p2cread = -1
-p2cwrite = -1, c2pread = 12, c2pwrite = 13, errread = -1, errwrite = 13
-restore_signals = True, gid = None, gids = None, uid = None, umask = -1
-start_new_session = False, process_group = -1
-
-    def _execute_child(self, args, executable, preexec_fn, close_fds,
-                       pass_fds, cwd, env,
-                       startupinfo, creationflags, shell,
-                       p2cread, p2cwrite,
-                       c2pread, c2pwrite,
-                       errread, errwrite,
-                       restore_signals,
-                       gid, gids, uid, umask,
-                       start_new_session, process_group):
-        """Execute program (POSIX version)"""
-    
-        if isinstance(args, (str, bytes)):
-            args = [args]
-        elif isinstance(args, os.PathLike):
-            if shell:
-                raise TypeError('path-like args is not allowed when '
-                                'shell is true')
-            args = [args]
-        else:
-            args = list(args)
-    
-        if shell:
-            # On Android the default shell is at '/system/bin/sh'.
-            unix_shell = ('/system/bin/sh' if
-                      hasattr(sys, 'getandroidapilevel') else '/bin/sh')
-            args = [unix_shell, "-c"] + args
-            if executable:
-                args[0] = executable
-    
-        if executable is None:
-            executable = args[0]
-    
-        sys.audit("subprocess.Popen", executable, args, cwd, env)
-    
-        if (_USE_POSIX_SPAWN
-                and os.path.dirname(executable)
-                and preexec_fn is None
-                and not close_fds
-                and not pass_fds
-                and cwd is None
-                and (p2cread == -1 or p2cread > 2)
-                and (c2pwrite == -1 or c2pwrite > 2)
-                and (errwrite == -1 or errwrite > 2)
-                and not start_new_session
-                and process_group == -1
-                and gid is None
-                and gids is None
-                and uid is None
-                and umask < 0):
-            self._posix_spawn(args, executable, env, restore_signals,
-                              p2cread, p2cwrite,
-                              c2pread, c2pwrite,
-                              errread, errwrite)
-            return
-    
-        orig_executable = executable
-    
-        # For transferring possible exec failure from child to parent.
-        # Data format: "exception name:hex errno:description"
-        # Pickle is not used; it is complex and involves memory allocation.
-        errpipe_read, errpipe_write = os.pipe()
-        # errpipe_write must not be in the standard io 0, 1, or 2 fd range.
-        low_fds_to_close = []
-        while errpipe_write < 3:
-            low_fds_to_close.append(errpipe_write)
-            errpipe_write = os.dup(errpipe_write)
-        for low_fd in low_fds_to_close:
-            os.close(low_fd)
-        try:
-            try:
-                # We must avoid complex work that could involve
-                # malloc or free in the child process to avoid
-                # potential deadlocks, thus we do all this here.
-                # and pass it to fork_exec()
-    
-                if env is not None:
-                    env_list = []
-                    for k, v in env.items():
-                        k = os.fsencode(k)
-                        if b'=' in k:
-                            raise ValueError("illegal environment variable name")
-                        env_list.append(k + b'=' + os.fsencode(v))
-                else:
-                    env_list = None  # Use execv instead of execve.
-                executable = os.fsencode(executable)
-                if os.path.dirname(executable):
-                    executable_list = (executable,)
-                else:
-                    # This matches the behavior of os._execvpe().
-                    executable_list = tuple(
-                        os.path.join(os.fsencode(dir), executable)
-                        for dir in os.get_exec_path(env))
-                fds_to_keep = set(pass_fds)
-                fds_to_keep.add(errpipe_write)
-                self.pid = _fork_exec(
-                        args, executable_list,
-                        close_fds, tuple(sorted(map(int, fds_to_keep))),
-                        cwd, env_list,
-                        p2cread, p2cwrite, c2pread, c2pwrite,
-                        errread, errwrite,
-                        errpipe_read, errpipe_write,
-                        restore_signals, start_new_session,
-                        process_group, gid, gids, uid, umask,
-                        preexec_fn, _USE_VFORK)
-                self._child_created = True
-            finally:
-                # be sure the FD is closed no matter what
-                os.close(errpipe_write)
-    
-            self._close_pipe_fds(p2cread, p2cwrite,
-                                 c2pread, c2pwrite,
-                                 errread, errwrite)
-    
-            # Wait for exec to fail or succeed; possibly raising an
-            # exception (limited in size)
-            errpipe_data = bytearray()
-            while True:
-                part = os.read(errpipe_read, 50000)
-                errpipe_data += part
-                if not part or len(errpipe_data) > 50000:
-                    break
-        finally:
-            # be sure the FD is closed no matter what
-            os.close(errpipe_read)
-    
-        if errpipe_data:
-            try:
-                pid, sts = os.waitpid(self.pid, 0)
-                if pid == self.pid:
-                    self._handle_exitstatus(sts)
-                else:
-                    self.returncode = sys.maxsize
-            except ChildProcessError:
-                pass
-    
-            try:
-                exception_name, hex_errno, err_msg = (
-                        errpipe_data.split(b':', 2))
-                # The encoding here should match the encoding
-                # written in by the subprocess implementations
-                # like _posixsubprocess
-                err_msg = err_msg.decode()
-            except ValueError:
-                exception_name = b'SubprocessError'
-                hex_errno = b'0'
-                err_msg = 'Bad exception data from child: {!r}'.format(
-                              bytes(errpipe_data))
-            child_exception_type = getattr(
-                    builtins, exception_name.decode('ascii'),
-                    SubprocessError)
-            if issubclass(child_exception_type, OSError) and hex_errno:
-                errno_num = int(hex_errno, 16)
-                if err_msg == "noexec:chdir":
-                    err_msg = ""
-                    # The error must be from chdir(cwd).
-                    err_filename = cwd
-                elif err_msg == "noexec":
-                    err_msg = ""
-                    err_filename = None
-                else:
-                    err_filename = orig_executable
-                if errno_num != 0:
-                    err_msg = os.strerror(errno_num)
-                if err_filename is not None:
->                   raise child_exception_type(errno_num, err_msg, err_filename)
-E                   FileNotFoundError: [Errno 2] No such file or directory: 'latex'
-
-/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:1955: FileNotFoundError
-
-The above exception was the direct cause of the following exception:
-
-diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x1206bfa70>
-
-    def test_autocorrelation_plot(diagnostics):
-        """Test autocorrelation plotting functionality."""
-        # Create mock chain
-        n_steps = 1000
-        n_walkers = 32
-        n_params = 3
-        chain = np.random.normal(size=(n_steps, n_walkers, n_params))
-        param_names = ['param1', 'param2', 'param3']
-    
->       fig = diagnostics.plot_autocorrelation(chain, param_names)
-
-tests/test_visualization.py:128: 
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-cmb_analysis/visualization/diagnostics.py:100: in plot_autocorrelation
-    plt.tight_layout()
-venv/lib/python3.12/site-packages/matplotlib/pyplot.py:2801: in tight_layout
-    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
-venv/lib/python3.12/site-packages/matplotlib/figure.py:3545: in tight_layout
-    engine.execute(self)
-venv/lib/python3.12/site-packages/matplotlib/layout_engine.py:183: in execute
-    kwargs = get_tight_layout_figure(
-venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:266: in get_tight_layout_figure
-    kwargs = _auto_adjust_subplotpars(fig, renderer,
-venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:82: in _auto_adjust_subplotpars
-    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
-venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
-    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
-venv/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:457: in wrapper
-    return func(*args, **kwargs)
-venv/lib/python3.12/site-packages/matplotlib/axes/_base.py:4476: in get_tightbbox
-    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
-venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
-    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
-venv/lib/python3.12/site-packages/matplotlib/axis.py:1372: in get_tightbbox
-    self._update_label_position(renderer)
-venv/lib/python3.12/site-packages/matplotlib/axis.py:2654: in _update_label_position
-    bboxes, bboxes2 = self._get_tick_boxes_siblings(renderer=renderer)
-venv/lib/python3.12/site-packages/matplotlib/axis.py:2206: in _get_tick_boxes_siblings
-    tlb, tlb2 = axis._get_ticklabel_bboxes(ticks_to_draw, renderer)
-venv/lib/python3.12/site-packages/matplotlib/axis.py:1351: in _get_ticklabel_bboxes
-    return ([tick.label1.get_window_extent(renderer)
-venv/lib/python3.12/site-packages/matplotlib/text.py:959: in get_window_extent
-    bbox, info, descent = self._get_layout(self._renderer)
-venv/lib/python3.12/site-packages/matplotlib/text.py:373: in _get_layout
-    _, lp_h, lp_d = _get_text_metrics_with_cache(
-venv/lib/python3.12/site-packages/matplotlib/text.py:69: in _get_text_metrics_with_cache
-    return _get_text_metrics_with_cache_impl(
-venv/lib/python3.12/site-packages/matplotlib/text.py:77: in _get_text_metrics_with_cache_impl
-    return renderer_ref().get_text_width_height_descent(text, fontprop, ismath)
-venv/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:212: in get_text_width_height_descent
-    return super().get_text_width_height_descent(s, prop, ismath)
-venv/lib/python3.12/site-packages/matplotlib/backend_bases.py:597: in get_text_width_height_descent
-    return self.get_texmanager().get_text_width_height_descent(
-venv/lib/python3.12/site-packages/matplotlib/texmanager.py:363: in get_text_width_height_descent
-    dvifile = cls.make_dvi(tex, fontsize)
-venv/lib/python3.12/site-packages/matplotlib/texmanager.py:295: in make_dvi
-    cls._run_checked_subprocess(
-_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-
-cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmp8ckrz88y', 'ebddbc55302063cddd8b76d385f18547.tex']
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmph73c9gnj', '881c8c80c0be83c212df7c7a905e568c.tex']
 tex = 'lp'
 
     @classmethod
@@ -1240,7 +979,7 @@ venv/lib/python3.12/site-packages/matplotlib/texmanager.py:254: RuntimeError
 ___________________________ test_convergence_metrics ___________________________
 
 cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmplyfrue7q', 'ebddbc55302063cddd8b76d385f18547.tex']
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpaqtpi8x0', '881c8c80c0be83c212df7c7a905e568c.tex']
 tex = 'lp'
 
     @classmethod
@@ -1262,11 +1001,11 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 self = <Popen: returncode: 255 args: ['latex', '-interaction=nonstopmode', '--halt-...>
-args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmplyfrue7q', 'ebddbc55302063cddd8b76d385f18547.tex']
+args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpaqtpi8x0', '881c8c80c0be83c212df7c7a905e568c.tex']
 executable = b'latex', preexec_fn = None, close_fds = True, pass_fds = ()
-cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/eb/dd'), env = None
+cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/88/1c'), env = None
 startupinfo = None, creationflags = 0, shell = False, p2cread = -1
-p2cwrite = -1, c2pread = 12, c2pwrite = 13, errread = -1, errwrite = 13
+p2cwrite = -1, c2pread = 11, c2pwrite = 12, errread = -1, errwrite = 12
 restore_signals = True, gid = None, gids = None, uid = None, umask = -1
 start_new_session = False, process_group = -1
 
@@ -1441,20 +1180,19 @@ E                   FileNotFoundError: [Errno 2] No such file or directory: 'lat
 
 The above exception was the direct cause of the following exception:
 
-diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x120afb680>
+diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x10e93e270>
+mock_chain = array([[[6.68741597e+01, 2.23624335e-02, 1.17412231e-01, 5.41431059e-02,
+         9.56458595e-01, 2.99978780e+00],
+   ...],
+        [6.74867524e+01, 2.20279723e-02, 1.17446159e-01, 5.52418584e-02,
+         9.59260700e-01, 3.03576430e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
 
-    def test_convergence_metrics(diagnostics):
+    def test_convergence_metrics(diagnostics, mock_chain, param_names):
         """Test convergence metrics plotting."""
-        # Create mock chain
-        n_steps = 1000
-        n_walkers = 32
-        n_params = 3
-        chain = np.random.normal(size=(n_steps, n_walkers, n_params))
-        param_names = ['param1', 'param2', 'param3']
-    
->       fig = diagnostics.plot_convergence_metrics(chain, param_names)
+>       fig = diagnostics.plot_convergence_metrics(mock_chain, param_names)
 
-tests/test_visualization.py:145: 
+tests/test_visualization.py:47: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 cmb_analysis/visualization/diagnostics.py:161: in plot_convergence_metrics
     plt.tight_layout()
@@ -1503,7 +1241,7 @@ venv/lib/python3.12/site-packages/matplotlib/texmanager.py:295: in make_dvi
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmplyfrue7q', 'ebddbc55302063cddd8b76d385f18547.tex']
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpaqtpi8x0', '881c8c80c0be83c212df7c7a905e568c.tex']
 tex = 'lp'
 
     @classmethod
@@ -1520,10 +1258,179 @@ tex = 'lp'
 E           RuntimeError: Failed to process string with tex because latex could not be found
 
 venv/lib/python3.12/site-packages/matplotlib/texmanager.py:254: RuntimeError
-___________________________ test_diagnostic_summary ____________________________
+_________________________ test_save_publication_plots __________________________
+
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x10fd7f3b0>
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+tmp_path = PosixPath('/private/var/folders/9l/0smmfnq15wz5kjnklghcmhvh0000gn/T/pytest-of-kashyap/pytest-4/test_save_publication_plots0')
+
+    def test_save_publication_plots(plotter, mock_cmb_data, tmp_path):
+        """Test saving publication-quality plots."""
+        theory = {
+            'cl_tt': mock_cmb_data['cl_tt'],
+            'cl_te': mock_cmb_data['cl_te'],
+            'cl_ee': mock_cmb_data['cl_ee']
+        }
+        data = theory.copy()
+        errors = {
+            'cl_tt': mock_cmb_data['noise_tt'],
+            'cl_te': mock_cmb_data['noise_te'],
+            'cl_ee': mock_cmb_data['noise_ee']
+        }
+    
+>       fig = plotter.plot_power_spectra(theory, data, errors)
+
+tests/test_visualization.py:66: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cmb_analysis/visualization/plotting.py:94: in plot_power_spectra
+    plt.tight_layout()
+venv/lib/python3.12/site-packages/matplotlib/pyplot.py:2801: in tight_layout
+    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
+venv/lib/python3.12/site-packages/matplotlib/figure.py:3545: in tight_layout
+    engine.execute(self)
+venv/lib/python3.12/site-packages/matplotlib/layout_engine.py:183: in execute
+    kwargs = get_tight_layout_figure(
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:266: in get_tight_layout_figure
+    kwargs = _auto_adjust_subplotpars(fig, renderer,
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:82: in _auto_adjust_subplotpars
+    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:457: in wrapper
+    return func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/axes/_base.py:4476: in get_tightbbox
+    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1370: in get_tightbbox
+    ticks_to_draw = self._update_ticks()
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1300: in _update_ticks
+    major_locs = self.get_majorticklocs()
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1531: in get_majorticklocs
+    return self.major.locator()
+venv/lib/python3.12/site-packages/matplotlib/ticker.py:2350: in __call__
+    return self.tick_values(vmin, vmax)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <matplotlib.ticker.LogLocator object at 0x10ed18530>
+vmin = np.float64(inf), vmax = np.float64(0.05500000000000001)
+
+    def tick_values(self, vmin, vmax):
+        if self.numticks == 'auto':
+            if self.axis is not None:
+                numticks = np.clip(self.axis.get_tick_space(), 2, 9)
+            else:
+                numticks = 9
+        else:
+            numticks = self.numticks
+    
+        b = self._base
+        if vmin <= 0.0:
+            if self.axis is not None:
+                vmin = self.axis.get_minpos()
+    
+            if vmin <= 0.0 or not np.isfinite(vmin):
+>               raise ValueError(
+                    "Data has no positive values, and therefore cannot be log-scaled.")
+E               ValueError: Data has no positive values, and therefore cannot be log-scaled.
+
+venv/lib/python3.12/site-packages/matplotlib/ticker.py:2367: ValueError
+________________________ test_plot_types[power_spectra] ________________________
+
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x10f57e180>
+diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x10f57fe60>
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+mock_chain = array([[[6.74089144e+01, 2.24156257e-02, 1.18185856e-01, 5.47482527e-02,
+         9.75100579e-01, 3.05035808e+00],
+   ...],
+        [6.76618144e+01, 2.28088693e-02, 1.17776371e-01, 5.41593623e-02,
+         9.70742545e-01, 3.05306406e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
+fig_type = 'power_spectra'
+
+    @pytest.mark.parametrize("fig_type", [
+        "power_spectra",
+        "residuals",
+        "corner",
+        "chain_evolution",
+        "convergence"
+    ])
+    def test_plot_types(plotter, diagnostics, mock_cmb_data, mock_chain,
+                        param_names, fig_type):
+        """Test different plot types."""
+        if fig_type == "power_spectra":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+>           fig = plotter.plot_power_spectra(theory, data, errors)
+
+tests/test_visualization.py:97: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cmb_analysis/visualization/plotting.py:94: in plot_power_spectra
+    plt.tight_layout()
+venv/lib/python3.12/site-packages/matplotlib/pyplot.py:2801: in tight_layout
+    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
+venv/lib/python3.12/site-packages/matplotlib/figure.py:3545: in tight_layout
+    engine.execute(self)
+venv/lib/python3.12/site-packages/matplotlib/layout_engine.py:183: in execute
+    kwargs = get_tight_layout_figure(
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:266: in get_tight_layout_figure
+    kwargs = _auto_adjust_subplotpars(fig, renderer,
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:82: in _auto_adjust_subplotpars
+    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:457: in wrapper
+    return func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/axes/_base.py:4476: in get_tightbbox
+    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1370: in get_tightbbox
+    ticks_to_draw = self._update_ticks()
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1300: in _update_ticks
+    major_locs = self.get_majorticklocs()
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1531: in get_majorticklocs
+    return self.major.locator()
+venv/lib/python3.12/site-packages/matplotlib/ticker.py:2350: in __call__
+    return self.tick_values(vmin, vmax)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <matplotlib.ticker.LogLocator object at 0x10ef0c0e0>
+vmin = np.float64(inf), vmax = np.float64(0.05500000000000001)
+
+    def tick_values(self, vmin, vmax):
+        if self.numticks == 'auto':
+            if self.axis is not None:
+                numticks = np.clip(self.axis.get_tick_space(), 2, 9)
+            else:
+                numticks = 9
+        else:
+            numticks = self.numticks
+    
+        b = self._base
+        if vmin <= 0.0:
+            if self.axis is not None:
+                vmin = self.axis.get_minpos()
+    
+            if vmin <= 0.0 or not np.isfinite(vmin):
+>               raise ValueError(
+                    "Data has no positive values, and therefore cannot be log-scaled.")
+E               ValueError: Data has no positive values, and therefore cannot be log-scaled.
+
+venv/lib/python3.12/site-packages/matplotlib/ticker.py:2367: ValueError
+__________________________ test_plot_types[residuals] __________________________
 
 cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmptpk_waxp', 'ebddbc55302063cddd8b76d385f18547.tex']
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpekey5gym', '881c8c80c0be83c212df7c7a905e568c.tex']
 tex = 'lp'
 
     @classmethod
@@ -1545,11 +1452,11 @@ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 self = <Popen: returncode: 255 args: ['latex', '-interaction=nonstopmode', '--halt-...>
-args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmptpk_waxp', 'ebddbc55302063cddd8b76d385f18547.tex']
+args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpekey5gym', '881c8c80c0be83c212df7c7a905e568c.tex']
 executable = b'latex', preexec_fn = None, close_fds = True, pass_fds = ()
-cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/eb/dd'), env = None
+cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/88/1c'), env = None
 startupinfo = None, creationflags = 0, shell = False, p2cread = -1
-p2cwrite = -1, c2pread = 12, c2pwrite = 13, errread = -1, errwrite = 13
+p2cwrite = -1, c2pread = 11, c2pwrite = 12, errread = -1, errwrite = 12
 restore_signals = True, gid = None, gids = None, uid = None, umask = -1
 start_new_session = False, process_group = -1
 
@@ -1724,25 +1631,915 @@ E                   FileNotFoundError: [Errno 2] No such file or directory: 'lat
 
 The above exception was the direct cause of the following exception:
 
-diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x1205e84a0>
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x10e4aba40>
+diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x10e4a83e0>
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+mock_chain = array([[[6.70107233e+01, 2.23580846e-02, 1.19756656e-01, 5.40738281e-02,
+         9.59051673e-01, 2.99251609e+00],
+   ...],
+        [6.79063588e+01, 2.24639097e-02, 1.20196183e-01, 5.28082612e-02,
+         9.73394241e-01, 3.02500163e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
+fig_type = 'residuals'
 
-    def test_diagnostic_summary(diagnostics):
-        """Test comprehensive diagnostic summary plot."""
-        # Create mock chain and data
-        n_steps = 1000
-        n_walkers = 32
-        n_params = 3
-        chain = np.random.normal(size=(n_steps, n_walkers, n_params))
-        param_names = ['param1', 'param2', 'param3']
-        acceptance_fraction = 0.5
-    
->       fig = diagnostics.plot_diagnostic_summary(
-            chain, param_names, acceptance_fraction
-        )
+    @pytest.mark.parametrize("fig_type", [
+        "power_spectra",
+        "residuals",
+        "corner",
+        "chain_evolution",
+        "convergence"
+    ])
+    def test_plot_types(plotter, diagnostics, mock_cmb_data, mock_chain,
+                        param_names, fig_type):
+        """Test different plot types."""
+        if fig_type == "power_spectra":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+            fig = plotter.plot_power_spectra(theory, data, errors)
+        elif fig_type == "residuals":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+>           fig = plotter.plot_residuals(theory, data, errors)
 
-tests/test_visualization.py:163: 
+tests/test_visualization.py:110: 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
-cmb_analysis/visualization/diagnostics.py:358: in plot_diagnostic_summary
+cmb_analysis/visualization/plotting.py:178: in plot_residuals
+    plt.tight_layout()
+venv/lib/python3.12/site-packages/matplotlib/pyplot.py:2801: in tight_layout
+    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
+venv/lib/python3.12/site-packages/matplotlib/figure.py:3545: in tight_layout
+    engine.execute(self)
+venv/lib/python3.12/site-packages/matplotlib/layout_engine.py:183: in execute
+    kwargs = get_tight_layout_figure(
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:266: in get_tight_layout_figure
+    kwargs = _auto_adjust_subplotpars(fig, renderer,
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:82: in _auto_adjust_subplotpars
+    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:457: in wrapper
+    return func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/axes/_base.py:4476: in get_tightbbox
+    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1372: in get_tightbbox
+    self._update_label_position(renderer)
+venv/lib/python3.12/site-packages/matplotlib/axis.py:2654: in _update_label_position
+    bboxes, bboxes2 = self._get_tick_boxes_siblings(renderer=renderer)
+venv/lib/python3.12/site-packages/matplotlib/axis.py:2206: in _get_tick_boxes_siblings
+    tlb, tlb2 = axis._get_ticklabel_bboxes(ticks_to_draw, renderer)
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1351: in _get_ticklabel_bboxes
+    return ([tick.label1.get_window_extent(renderer)
+venv/lib/python3.12/site-packages/matplotlib/text.py:959: in get_window_extent
+    bbox, info, descent = self._get_layout(self._renderer)
+venv/lib/python3.12/site-packages/matplotlib/text.py:373: in _get_layout
+    _, lp_h, lp_d = _get_text_metrics_with_cache(
+venv/lib/python3.12/site-packages/matplotlib/text.py:69: in _get_text_metrics_with_cache
+    return _get_text_metrics_with_cache_impl(
+venv/lib/python3.12/site-packages/matplotlib/text.py:77: in _get_text_metrics_with_cache_impl
+    return renderer_ref().get_text_width_height_descent(text, fontprop, ismath)
+venv/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:212: in get_text_width_height_descent
+    return super().get_text_width_height_descent(s, prop, ismath)
+venv/lib/python3.12/site-packages/matplotlib/backend_bases.py:597: in get_text_width_height_descent
+    return self.get_texmanager().get_text_width_height_descent(
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:363: in get_text_width_height_descent
+    dvifile = cls.make_dvi(tex, fontsize)
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:295: in make_dvi
+    cls._run_checked_subprocess(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'matplotlib.texmanager.TexManager'>
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpekey5gym', '881c8c80c0be83c212df7c7a905e568c.tex']
+tex = 'lp'
+
+    @classmethod
+    def _run_checked_subprocess(cls, command, tex, *, cwd=None):
+        _log.debug(cbook._pformat_subprocess(command))
+        try:
+            report = subprocess.check_output(
+                command, cwd=cwd if cwd is not None else cls._texcache,
+                stderr=subprocess.STDOUT)
+        except FileNotFoundError as exc:
+>           raise RuntimeError(
+                f'Failed to process string with tex because {command[0]} '
+                'could not be found') from exc
+E           RuntimeError: Failed to process string with tex because latex could not be found
+
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:254: RuntimeError
+___________________________ test_plot_types[corner] ____________________________
+
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x10fc43860>
+diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x10fc438c0>
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+mock_chain = array([[[6.69641798e+01, 2.24708077e-02, 1.19319110e-01, 5.50324537e-02,
+         9.42178789e-01, 3.04528379e+00],
+   ...],
+        [6.75362923e+01, 2.23842565e-02, 1.20675086e-01, 5.50129814e-02,
+         9.73870292e-01, 3.03942487e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
+fig_type = 'corner'
+
+    @pytest.mark.parametrize("fig_type", [
+        "power_spectra",
+        "residuals",
+        "corner",
+        "chain_evolution",
+        "convergence"
+    ])
+    def test_plot_types(plotter, diagnostics, mock_cmb_data, mock_chain,
+                        param_names, fig_type):
+        """Test different plot types."""
+        if fig_type == "power_spectra":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+            fig = plotter.plot_power_spectra(theory, data, errors)
+        elif fig_type == "residuals":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+            fig = plotter.plot_residuals(theory, data, errors)
+        elif fig_type == "corner":
+>           fig = plotter.plot_corner(
+                mock_chain.reshape(-1, mock_chain.shape[2]),
+                param_names
+
+tests/test_visualization.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cmb_analysis/visualization/plotting.py:202: in plot_corner
+    fig = corner.corner(
+venv/lib/python3.12/site-packages/corner/corner.py:248: in corner
+    return corner_impl(
+venv/lib/python3.12/site-packages/corner/core.py:370: in corner_impl
+    hist2d(
+venv/lib/python3.12/site-packages/corner/core.py:795: in hist2d
+    ax.contour(X2, Y2, H2.T, V, **contour_kwargs)
+venv/lib/python3.12/site-packages/matplotlib/__init__.py:1473: in inner
+    return func(
+venv/lib/python3.12/site-packages/matplotlib/axes/_axes.py:6659: in contour
+    contours = mcontour.QuadContourSet(self, *args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/contour.py:853: in __init__
+    self.set_cmap(cmap)
+venv/lib/python3.12/site-packages/matplotlib/cm.py:526: in set_cmap
+    self.changed()  # Things are not set up properly yet.
+venv/lib/python3.12/site-packages/matplotlib/contour.py:1105: in changed
+    self._process_colors()  # Sets cvalues.
+venv/lib/python3.12/site-packages/matplotlib/contour.py:1259: in _process_colors
+    self.set_norm(mcolors.NoNorm())
+venv/lib/python3.12/site-packages/matplotlib/cm.py:575: in set_norm
+    self.norm = norm
+venv/lib/python3.12/site-packages/matplotlib/cm.py:559: in norm
+    self.changed()
+venv/lib/python3.12/site-packages/matplotlib/contour.py:1110: in changed
+    self.norm.autoscale_None(self.levels)
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1451: in autoscale_None
+    self.vmin = A.min()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1294: in vmin
+    self._changed()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1322: in _changed
+    self.callbacks.process('changed')
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:303: in process
+    self.exception_handler(exc)
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:87: in _exception_printer
+    raise exc
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:298: in process
+    func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/contour.py:1110: in changed
+    self.norm.autoscale_None(self.levels)
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1453: in autoscale_None
+    self.vmax = A.max()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1305: in vmax
+    self._changed()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1322: in _changed
+    self.callbacks.process('changed')
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:303: in process
+    self.exception_handler(exc)
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:87: in _exception_printer
+    raise exc
+venv/lib/python3.12/site-packages/matplotlib/cbook.py:298: in process
+    func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/contour.py:1112: in changed
+    self.update_scalarmappable()
+venv/lib/python3.12/site-packages/matplotlib/collections.py:920: in update_scalarmappable
+    self._mapped_colors = self.to_rgba(self._A, self._alpha)
+venv/lib/python3.12/site-packages/matplotlib/cm.py:431: in to_rgba
+    rgba = self.cmap(x, alpha=alpha, bytes=bytes)
+venv/lib/python3.12/site-packages/matplotlib/colors.py:737: in __call__
+    self._init()
+venv/lib/python3.12/site-packages/matplotlib/colors.py:1188: in _init
+    self._lut[:-3] = to_rgba_array(self.colors)
+venv/lib/python3.12/site-packages/matplotlib/colors.py:510: in to_rgba_array
+    rgba = np.array([to_rgba(cc) for cc in c])
+venv/lib/python3.12/site-packages/matplotlib/colors.py:314: in to_rgba
+    rgba = _to_rgba_no_colorcycle(c, alpha)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+c = 0.00392156862745098, alpha = None
+
+    def _to_rgba_no_colorcycle(c, alpha=None):
+        """
+        Convert *c* to an RGBA color, with no support for color-cycle syntax.
+    
+        If *alpha* is given, force the alpha value of the returned RGBA tuple
+        to *alpha*. Otherwise, the alpha value from *c* is used, if it has alpha
+        information, or defaults to 1.
+    
+        *alpha* is ignored for the color value ``"none"`` (case-insensitive),
+        which always maps to ``(0, 0, 0, 0)``.
+        """
+        if alpha is not None and not 0 <= alpha <= 1:
+            raise ValueError("'alpha' must be between 0 and 1, inclusive")
+        orig_c = c
+        if c is np.ma.masked:
+            return (0., 0., 0., 0.)
+        if isinstance(c, str):
+            if c.lower() == "none":
+                return (0., 0., 0., 0.)
+            # Named color.
+            try:
+                # This may turn c into a non-string, so we check again below.
+                c = _colors_full_map[c]
+            except KeyError:
+                if len(orig_c) != 1:
+                    try:
+                        c = _colors_full_map[c.lower()]
+                    except KeyError:
+                        pass
+        if isinstance(c, str):
+            # hex color in #rrggbb format.
+            match = re.match(r"\A#[a-fA-F0-9]{6}\Z", c)
+            if match:
+                return (tuple(int(n, 16) / 255
+                              for n in [c[1:3], c[3:5], c[5:7]])
+                        + (alpha if alpha is not None else 1.,))
+            # hex color in #rgb format, shorthand for #rrggbb.
+            match = re.match(r"\A#[a-fA-F0-9]{3}\Z", c)
+            if match:
+                return (tuple(int(n, 16) / 255
+                              for n in [c[1]*2, c[2]*2, c[3]*2])
+                        + (alpha if alpha is not None else 1.,))
+            # hex color with alpha in #rrggbbaa format.
+            match = re.match(r"\A#[a-fA-F0-9]{8}\Z", c)
+            if match:
+                color = [int(n, 16) / 255
+                         for n in [c[1:3], c[3:5], c[5:7], c[7:9]]]
+                if alpha is not None:
+                    color[-1] = alpha
+                return tuple(color)
+            # hex color with alpha in #rgba format, shorthand for #rrggbbaa.
+            match = re.match(r"\A#[a-fA-F0-9]{4}\Z", c)
+            if match:
+                color = [int(n, 16) / 255
+                         for n in [c[1]*2, c[2]*2, c[3]*2, c[4]*2]]
+                if alpha is not None:
+                    color[-1] = alpha
+                return tuple(color)
+            # string gray.
+            try:
+                c = float(c)
+            except ValueError:
+                pass
+            else:
+                if not (0 <= c <= 1):
+                    raise ValueError(
+                        f"Invalid string grayscale value {orig_c!r}. "
+                        f"Value must be within 0-1 range")
+                return c, c, c, alpha if alpha is not None else 1.
+            raise ValueError(f"Invalid RGBA argument: {orig_c!r}")
+        # turn 2-D array into 1-D array
+        if isinstance(c, np.ndarray):
+            if c.ndim == 2 and c.shape[0] == 1:
+                c = c.reshape(-1)
+        # tuple color.
+        if not np.iterable(c):
+>           raise ValueError(f"Invalid RGBA argument: {orig_c!r}")
+E           ValueError: Invalid RGBA argument: 0.00392156862745098
+
+venv/lib/python3.12/site-packages/matplotlib/colors.py:398: ValueError
+_______________________ test_plot_types[chain_evolution] _______________________
+
+cls = <class 'matplotlib.texmanager.TexManager'>
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpt9gqeb6o', '881c8c80c0be83c212df7c7a905e568c.tex']
+tex = 'lp'
+
+    @classmethod
+    def _run_checked_subprocess(cls, command, tex, *, cwd=None):
+        _log.debug(cbook._pformat_subprocess(command))
+        try:
+>           report = subprocess.check_output(
+                command, cwd=cwd if cwd is not None else cls._texcache,
+                stderr=subprocess.STDOUT)
+
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:250: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:466: in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Popen: returncode: 255 args: ['latex', '-interaction=nonstopmode', '--halt-...>
+args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpt9gqeb6o', '881c8c80c0be83c212df7c7a905e568c.tex']
+executable = b'latex', preexec_fn = None, close_fds = True, pass_fds = ()
+cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/88/1c'), env = None
+startupinfo = None, creationflags = 0, shell = False, p2cread = -1
+p2cwrite = -1, c2pread = 11, c2pwrite = 12, errread = -1, errwrite = 12
+restore_signals = True, gid = None, gids = None, uid = None, umask = -1
+start_new_session = False, process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       restore_signals,
+                       gid, gids, uid, umask,
+                       start_new_session, process_group):
+        """Execute program (POSIX version)"""
+    
+        if isinstance(args, (str, bytes)):
+            args = [args]
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = [args]
+        else:
+            args = list(args)
+    
+        if shell:
+            # On Android the default shell is at '/system/bin/sh'.
+            unix_shell = ('/system/bin/sh' if
+                      hasattr(sys, 'getandroidapilevel') else '/bin/sh')
+            args = [unix_shell, "-c"] + args
+            if executable:
+                args[0] = executable
+    
+        if executable is None:
+            executable = args[0]
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        if (_USE_POSIX_SPAWN
+                and os.path.dirname(executable)
+                and preexec_fn is None
+                and not close_fds
+                and not pass_fds
+                and cwd is None
+                and (p2cread == -1 or p2cread > 2)
+                and (c2pwrite == -1 or c2pwrite > 2)
+                and (errwrite == -1 or errwrite > 2)
+                and not start_new_session
+                and process_group == -1
+                and gid is None
+                and gids is None
+                and uid is None
+                and umask < 0):
+            self._posix_spawn(args, executable, env, restore_signals,
+                              p2cread, p2cwrite,
+                              c2pread, c2pwrite,
+                              errread, errwrite)
+            return
+    
+        orig_executable = executable
+    
+        # For transferring possible exec failure from child to parent.
+        # Data format: "exception name:hex errno:description"
+        # Pickle is not used; it is complex and involves memory allocation.
+        errpipe_read, errpipe_write = os.pipe()
+        # errpipe_write must not be in the standard io 0, 1, or 2 fd range.
+        low_fds_to_close = []
+        while errpipe_write < 3:
+            low_fds_to_close.append(errpipe_write)
+            errpipe_write = os.dup(errpipe_write)
+        for low_fd in low_fds_to_close:
+            os.close(low_fd)
+        try:
+            try:
+                # We must avoid complex work that could involve
+                # malloc or free in the child process to avoid
+                # potential deadlocks, thus we do all this here.
+                # and pass it to fork_exec()
+    
+                if env is not None:
+                    env_list = []
+                    for k, v in env.items():
+                        k = os.fsencode(k)
+                        if b'=' in k:
+                            raise ValueError("illegal environment variable name")
+                        env_list.append(k + b'=' + os.fsencode(v))
+                else:
+                    env_list = None  # Use execv instead of execve.
+                executable = os.fsencode(executable)
+                if os.path.dirname(executable):
+                    executable_list = (executable,)
+                else:
+                    # This matches the behavior of os._execvpe().
+                    executable_list = tuple(
+                        os.path.join(os.fsencode(dir), executable)
+                        for dir in os.get_exec_path(env))
+                fds_to_keep = set(pass_fds)
+                fds_to_keep.add(errpipe_write)
+                self.pid = _fork_exec(
+                        args, executable_list,
+                        close_fds, tuple(sorted(map(int, fds_to_keep))),
+                        cwd, env_list,
+                        p2cread, p2cwrite, c2pread, c2pwrite,
+                        errread, errwrite,
+                        errpipe_read, errpipe_write,
+                        restore_signals, start_new_session,
+                        process_group, gid, gids, uid, umask,
+                        preexec_fn, _USE_VFORK)
+                self._child_created = True
+            finally:
+                # be sure the FD is closed no matter what
+                os.close(errpipe_write)
+    
+            self._close_pipe_fds(p2cread, p2cwrite,
+                                 c2pread, c2pwrite,
+                                 errread, errwrite)
+    
+            # Wait for exec to fail or succeed; possibly raising an
+            # exception (limited in size)
+            errpipe_data = bytearray()
+            while True:
+                part = os.read(errpipe_read, 50000)
+                errpipe_data += part
+                if not part or len(errpipe_data) > 50000:
+                    break
+        finally:
+            # be sure the FD is closed no matter what
+            os.close(errpipe_read)
+    
+        if errpipe_data:
+            try:
+                pid, sts = os.waitpid(self.pid, 0)
+                if pid == self.pid:
+                    self._handle_exitstatus(sts)
+                else:
+                    self.returncode = sys.maxsize
+            except ChildProcessError:
+                pass
+    
+            try:
+                exception_name, hex_errno, err_msg = (
+                        errpipe_data.split(b':', 2))
+                # The encoding here should match the encoding
+                # written in by the subprocess implementations
+                # like _posixsubprocess
+                err_msg = err_msg.decode()
+            except ValueError:
+                exception_name = b'SubprocessError'
+                hex_errno = b'0'
+                err_msg = 'Bad exception data from child: {!r}'.format(
+                              bytes(errpipe_data))
+            child_exception_type = getattr(
+                    builtins, exception_name.decode('ascii'),
+                    SubprocessError)
+            if issubclass(child_exception_type, OSError) and hex_errno:
+                errno_num = int(hex_errno, 16)
+                if err_msg == "noexec:chdir":
+                    err_msg = ""
+                    # The error must be from chdir(cwd).
+                    err_filename = cwd
+                elif err_msg == "noexec":
+                    err_msg = ""
+                    err_filename = None
+                else:
+                    err_filename = orig_executable
+                if errno_num != 0:
+                    err_msg = os.strerror(errno_num)
+                if err_filename is not None:
+>                   raise child_exception_type(errno_num, err_msg, err_filename)
+E                   FileNotFoundError: [Errno 2] No such file or directory: 'latex'
+
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:1955: FileNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x10f4afcb0>
+diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x10f9503e0>
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+mock_chain = array([[[6.81741598e+01, 2.23253516e-02, 1.18374115e-01, 5.44621087e-02,
+         9.43228146e-01, 3.08505560e+00],
+   ...],
+        [6.71219555e+01, 2.21540116e-02, 1.20489035e-01, 5.44907739e-02,
+         9.57882912e-01, 3.02797294e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
+fig_type = 'chain_evolution'
+
+    @pytest.mark.parametrize("fig_type", [
+        "power_spectra",
+        "residuals",
+        "corner",
+        "chain_evolution",
+        "convergence"
+    ])
+    def test_plot_types(plotter, diagnostics, mock_cmb_data, mock_chain,
+                        param_names, fig_type):
+        """Test different plot types."""
+        if fig_type == "power_spectra":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+            fig = plotter.plot_power_spectra(theory, data, errors)
+        elif fig_type == "residuals":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+            fig = plotter.plot_residuals(theory, data, errors)
+        elif fig_type == "corner":
+            fig = plotter.plot_corner(
+                mock_chain.reshape(-1, mock_chain.shape[2]),
+                param_names
+            )
+        elif fig_type == "chain_evolution":
+>           fig = diagnostics.plot_chain_evolution(mock_chain, param_names)
+
+tests/test_visualization.py:117: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cmb_analysis/visualization/diagnostics.py:65: in plot_chain_evolution
+    plt.tight_layout()
+venv/lib/python3.12/site-packages/matplotlib/pyplot.py:2801: in tight_layout
+    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
+venv/lib/python3.12/site-packages/matplotlib/figure.py:3545: in tight_layout
+    engine.execute(self)
+venv/lib/python3.12/site-packages/matplotlib/layout_engine.py:183: in execute
+    kwargs = get_tight_layout_figure(
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:266: in get_tight_layout_figure
+    kwargs = _auto_adjust_subplotpars(fig, renderer,
+venv/lib/python3.12/site-packages/matplotlib/_tight_layout.py:82: in _auto_adjust_subplotpars
+    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/_api/deprecation.py:457: in wrapper
+    return func(*args, **kwargs)
+venv/lib/python3.12/site-packages/matplotlib/axes/_base.py:4476: in get_tightbbox
+    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
+venv/lib/python3.12/site-packages/matplotlib/artist.py:1410: in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1372: in get_tightbbox
+    self._update_label_position(renderer)
+venv/lib/python3.12/site-packages/matplotlib/axis.py:2654: in _update_label_position
+    bboxes, bboxes2 = self._get_tick_boxes_siblings(renderer=renderer)
+venv/lib/python3.12/site-packages/matplotlib/axis.py:2206: in _get_tick_boxes_siblings
+    tlb, tlb2 = axis._get_ticklabel_bboxes(ticks_to_draw, renderer)
+venv/lib/python3.12/site-packages/matplotlib/axis.py:1351: in _get_ticklabel_bboxes
+    return ([tick.label1.get_window_extent(renderer)
+venv/lib/python3.12/site-packages/matplotlib/text.py:959: in get_window_extent
+    bbox, info, descent = self._get_layout(self._renderer)
+venv/lib/python3.12/site-packages/matplotlib/text.py:373: in _get_layout
+    _, lp_h, lp_d = _get_text_metrics_with_cache(
+venv/lib/python3.12/site-packages/matplotlib/text.py:69: in _get_text_metrics_with_cache
+    return _get_text_metrics_with_cache_impl(
+venv/lib/python3.12/site-packages/matplotlib/text.py:77: in _get_text_metrics_with_cache_impl
+    return renderer_ref().get_text_width_height_descent(text, fontprop, ismath)
+venv/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py:212: in get_text_width_height_descent
+    return super().get_text_width_height_descent(s, prop, ismath)
+venv/lib/python3.12/site-packages/matplotlib/backend_bases.py:597: in get_text_width_height_descent
+    return self.get_texmanager().get_text_width_height_descent(
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:363: in get_text_width_height_descent
+    dvifile = cls.make_dvi(tex, fontsize)
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:295: in make_dvi
+    cls._run_checked_subprocess(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+cls = <class 'matplotlib.texmanager.TexManager'>
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmpt9gqeb6o', '881c8c80c0be83c212df7c7a905e568c.tex']
+tex = 'lp'
+
+    @classmethod
+    def _run_checked_subprocess(cls, command, tex, *, cwd=None):
+        _log.debug(cbook._pformat_subprocess(command))
+        try:
+            report = subprocess.check_output(
+                command, cwd=cwd if cwd is not None else cls._texcache,
+                stderr=subprocess.STDOUT)
+        except FileNotFoundError as exc:
+>           raise RuntimeError(
+                f'Failed to process string with tex because {command[0]} '
+                'could not be found') from exc
+E           RuntimeError: Failed to process string with tex because latex could not be found
+
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:254: RuntimeError
+_________________________ test_plot_types[convergence] _________________________
+
+cls = <class 'matplotlib.texmanager.TexManager'>
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmp1te_mttc', '881c8c80c0be83c212df7c7a905e568c.tex']
+tex = 'lp'
+
+    @classmethod
+    def _run_checked_subprocess(cls, command, tex, *, cwd=None):
+        _log.debug(cbook._pformat_subprocess(command))
+        try:
+>           report = subprocess.check_output(
+                command, cwd=cwd if cwd is not None else cls._texcache,
+                stderr=subprocess.STDOUT)
+
+venv/lib/python3.12/site-packages/matplotlib/texmanager.py:250: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:466: in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:548: in run
+    with Popen(*popenargs, **kwargs) as process:
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:1026: in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Popen: returncode: 255 args: ['latex', '-interaction=nonstopmode', '--halt-...>
+args = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmp1te_mttc', '881c8c80c0be83c212df7c7a905e568c.tex']
+executable = b'latex', preexec_fn = None, close_fds = True, pass_fds = ()
+cwd = PosixPath('/Users/kashyap/.matplotlib/tex.cache/88/1c'), env = None
+startupinfo = None, creationflags = 0, shell = False, p2cread = -1
+p2cwrite = -1, c2pread = 11, c2pwrite = 12, errread = -1, errwrite = 12
+restore_signals = True, gid = None, gids = None, uid = None, umask = -1
+start_new_session = False, process_group = -1
+
+    def _execute_child(self, args, executable, preexec_fn, close_fds,
+                       pass_fds, cwd, env,
+                       startupinfo, creationflags, shell,
+                       p2cread, p2cwrite,
+                       c2pread, c2pwrite,
+                       errread, errwrite,
+                       restore_signals,
+                       gid, gids, uid, umask,
+                       start_new_session, process_group):
+        """Execute program (POSIX version)"""
+    
+        if isinstance(args, (str, bytes)):
+            args = [args]
+        elif isinstance(args, os.PathLike):
+            if shell:
+                raise TypeError('path-like args is not allowed when '
+                                'shell is true')
+            args = [args]
+        else:
+            args = list(args)
+    
+        if shell:
+            # On Android the default shell is at '/system/bin/sh'.
+            unix_shell = ('/system/bin/sh' if
+                      hasattr(sys, 'getandroidapilevel') else '/bin/sh')
+            args = [unix_shell, "-c"] + args
+            if executable:
+                args[0] = executable
+    
+        if executable is None:
+            executable = args[0]
+    
+        sys.audit("subprocess.Popen", executable, args, cwd, env)
+    
+        if (_USE_POSIX_SPAWN
+                and os.path.dirname(executable)
+                and preexec_fn is None
+                and not close_fds
+                and not pass_fds
+                and cwd is None
+                and (p2cread == -1 or p2cread > 2)
+                and (c2pwrite == -1 or c2pwrite > 2)
+                and (errwrite == -1 or errwrite > 2)
+                and not start_new_session
+                and process_group == -1
+                and gid is None
+                and gids is None
+                and uid is None
+                and umask < 0):
+            self._posix_spawn(args, executable, env, restore_signals,
+                              p2cread, p2cwrite,
+                              c2pread, c2pwrite,
+                              errread, errwrite)
+            return
+    
+        orig_executable = executable
+    
+        # For transferring possible exec failure from child to parent.
+        # Data format: "exception name:hex errno:description"
+        # Pickle is not used; it is complex and involves memory allocation.
+        errpipe_read, errpipe_write = os.pipe()
+        # errpipe_write must not be in the standard io 0, 1, or 2 fd range.
+        low_fds_to_close = []
+        while errpipe_write < 3:
+            low_fds_to_close.append(errpipe_write)
+            errpipe_write = os.dup(errpipe_write)
+        for low_fd in low_fds_to_close:
+            os.close(low_fd)
+        try:
+            try:
+                # We must avoid complex work that could involve
+                # malloc or free in the child process to avoid
+                # potential deadlocks, thus we do all this here.
+                # and pass it to fork_exec()
+    
+                if env is not None:
+                    env_list = []
+                    for k, v in env.items():
+                        k = os.fsencode(k)
+                        if b'=' in k:
+                            raise ValueError("illegal environment variable name")
+                        env_list.append(k + b'=' + os.fsencode(v))
+                else:
+                    env_list = None  # Use execv instead of execve.
+                executable = os.fsencode(executable)
+                if os.path.dirname(executable):
+                    executable_list = (executable,)
+                else:
+                    # This matches the behavior of os._execvpe().
+                    executable_list = tuple(
+                        os.path.join(os.fsencode(dir), executable)
+                        for dir in os.get_exec_path(env))
+                fds_to_keep = set(pass_fds)
+                fds_to_keep.add(errpipe_write)
+                self.pid = _fork_exec(
+                        args, executable_list,
+                        close_fds, tuple(sorted(map(int, fds_to_keep))),
+                        cwd, env_list,
+                        p2cread, p2cwrite, c2pread, c2pwrite,
+                        errread, errwrite,
+                        errpipe_read, errpipe_write,
+                        restore_signals, start_new_session,
+                        process_group, gid, gids, uid, umask,
+                        preexec_fn, _USE_VFORK)
+                self._child_created = True
+            finally:
+                # be sure the FD is closed no matter what
+                os.close(errpipe_write)
+    
+            self._close_pipe_fds(p2cread, p2cwrite,
+                                 c2pread, c2pwrite,
+                                 errread, errwrite)
+    
+            # Wait for exec to fail or succeed; possibly raising an
+            # exception (limited in size)
+            errpipe_data = bytearray()
+            while True:
+                part = os.read(errpipe_read, 50000)
+                errpipe_data += part
+                if not part or len(errpipe_data) > 50000:
+                    break
+        finally:
+            # be sure the FD is closed no matter what
+            os.close(errpipe_read)
+    
+        if errpipe_data:
+            try:
+                pid, sts = os.waitpid(self.pid, 0)
+                if pid == self.pid:
+                    self._handle_exitstatus(sts)
+                else:
+                    self.returncode = sys.maxsize
+            except ChildProcessError:
+                pass
+    
+            try:
+                exception_name, hex_errno, err_msg = (
+                        errpipe_data.split(b':', 2))
+                # The encoding here should match the encoding
+                # written in by the subprocess implementations
+                # like _posixsubprocess
+                err_msg = err_msg.decode()
+            except ValueError:
+                exception_name = b'SubprocessError'
+                hex_errno = b'0'
+                err_msg = 'Bad exception data from child: {!r}'.format(
+                              bytes(errpipe_data))
+            child_exception_type = getattr(
+                    builtins, exception_name.decode('ascii'),
+                    SubprocessError)
+            if issubclass(child_exception_type, OSError) and hex_errno:
+                errno_num = int(hex_errno, 16)
+                if err_msg == "noexec:chdir":
+                    err_msg = ""
+                    # The error must be from chdir(cwd).
+                    err_filename = cwd
+                elif err_msg == "noexec":
+                    err_msg = ""
+                    err_filename = None
+                else:
+                    err_filename = orig_executable
+                if errno_num != 0:
+                    err_msg = os.strerror(errno_num)
+                if err_filename is not None:
+>                   raise child_exception_type(errno_num, err_msg, err_filename)
+E                   FileNotFoundError: [Errno 2] No such file or directory: 'latex'
+
+/usr/local/Cellar/python@3.12/3.12.7/Frameworks/Python.framework/Versions/3.12/lib/python3.12/subprocess.py:1955: FileNotFoundError
+
+The above exception was the direct cause of the following exception:
+
+plotter = <cmb_analysis.visualization.plotting.CMBPlotter object at 0x110a47080>
+diagnostics = <cmb_analysis.visualization.diagnostics.MCMCDiagnostics object at 0x1101076b0>
+mock_cmb_data = {'cl_ee': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_te': array([nan, nan, nan, ..., nan, nan, nan]), 'cl_tt': array([nan, nan, nan, ..., nan, nan, nan]), 'ell': array([   2,    3,    4, ..., 2497, 2498, 2499]), ...}
+mock_chain = array([[[6.77615890e+01, 2.21527986e-02, 1.19166100e-01, 5.56234279e-02,
+         9.74970938e-01, 3.06476180e+00],
+   ...],
+        [6.62584278e+01, 2.20047095e-02, 1.21012229e-01, 5.45637429e-02,
+         9.85493905e-01, 3.11216182e+00]]])
+param_names = ['H0', 'omega_b', 'omega_cdm', 'tau', 'ns', 'ln10As']
+fig_type = 'convergence'
+
+    @pytest.mark.parametrize("fig_type", [
+        "power_spectra",
+        "residuals",
+        "corner",
+        "chain_evolution",
+        "convergence"
+    ])
+    def test_plot_types(plotter, diagnostics, mock_cmb_data, mock_chain,
+                        param_names, fig_type):
+        """Test different plot types."""
+        if fig_type == "power_spectra":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+            fig = plotter.plot_power_spectra(theory, data, errors)
+        elif fig_type == "residuals":
+            theory = {
+                'cl_tt': mock_cmb_data['cl_tt'],
+                'cl_te': mock_cmb_data['cl_te'],
+                'cl_ee': mock_cmb_data['cl_ee']
+            }
+            data = theory.copy()
+            errors = {
+                'cl_tt': mock_cmb_data['noise_tt'],
+                'cl_te': mock_cmb_data['noise_te'],
+                'cl_ee': mock_cmb_data['noise_ee']
+            }
+            fig = plotter.plot_residuals(theory, data, errors)
+        elif fig_type == "corner":
+            fig = plotter.plot_corner(
+                mock_chain.reshape(-1, mock_chain.shape[2]),
+                param_names
+            )
+        elif fig_type == "chain_evolution":
+            fig = diagnostics.plot_chain_evolution(mock_chain, param_names)
+        else:  # convergence
+>           fig = diagnostics.plot_convergence_metrics(mock_chain, param_names)
+
+tests/test_visualization.py:119: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+cmb_analysis/visualization/diagnostics.py:161: in plot_convergence_metrics
     plt.tight_layout()
 venv/lib/python3.12/site-packages/matplotlib/pyplot.py:2801: in tight_layout
     gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
@@ -1789,7 +2586,7 @@ venv/lib/python3.12/site-packages/matplotlib/texmanager.py:295: in make_dvi
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
 
 cls = <class 'matplotlib.texmanager.TexManager'>
-command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmptpk_waxp', 'ebddbc55302063cddd8b76d385f18547.tex']
+command = ['latex', '-interaction=nonstopmode', '--halt-on-error', '--output-directory=tmp1te_mttc', '881c8c80c0be83c212df7c7a905e568c.tex']
 tex = 'lp'
 
     @classmethod
@@ -1807,9 +2604,26 @@ E           RuntimeError: Failed to process string with tex because latex could 
 
 venv/lib/python3.12/site-packages/matplotlib/texmanager.py:254: RuntimeError
 =============================== warnings summary ===============================
-tests/test_analysis.py:92
-  /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:92: PytestUnknownMarkWarning: Unknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+tests/test_analysis.py:49
+  /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/tests/test_analysis.py:49: PytestUnknownMarkWarning: Unknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
     @pytest.mark.slow
+
+tests/test_analysis.py::test_power_spectrum_computation
+tests/test_analysis.py::test_numerical_stability
+tests/test_analysis.py::test_acoustic_peaks[100]
+tests/test_analysis.py::test_acoustic_peaks[500]
+tests/test_analysis.py::test_acoustic_peaks[1000]
+tests/test_analysis.py::test_error_propagation
+  /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/cmb_analysis/analysis/power_spectrum.py:84: UserWarning: Error in power spectrum computation: module 'scipy.integrate' has no attribute 'simps'
+    warnings.warn(f"Error in power spectrum computation: {e}")
+
+tests/test_analysis.py::test_error_propagation
+  /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/cmb_analysis/analysis/transfer.py:135: RuntimeWarning: invalid value encountered in log
+    T[large_k] = (np.log(2*np.e + 1.8*beta_c*q[large_k]) /
+
+tests/test_analysis.py::test_error_propagation
+  /Users/kashyap/Documents/KT/Computational Astrophysics/CMBAnalysis/CMBAnalysis/cmb_analysis/analysis/transfer.py:136: RuntimeWarning: invalid value encountered in log
+    (np.log(2*np.e + 1.8*beta_c*q[large_k]) +
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
 
@@ -1817,10 +2631,11 @@ tests/test_analysis.py:92
 Name                                        Stmts   Miss  Cover   Missing
 -------------------------------------------------------------------------
 cmb_analysis/__init__.py                       78      1    99%   128
+cmb_analysis/_version.py                       11     11     0%   3-16
 cmb_analysis/analysis/__init__.py               4      0   100%
 cmb_analysis/analysis/mcmc.py                 103     82    20%   42-53, 69-80, 96-117, 133-136, 147-166, 177-180, 196-209, 229-231, 242-255, 266-269, 283-306, 326-330
-cmb_analysis/analysis/power_spectrum.py        61     39    36%   61-85, 112-120, 149-158, 176, 194-207, 223, 244
-cmb_analysis/analysis/transfer.py              80     43    46%   83-94, 114-142, 162-170, 188-198, 217-227, 245-252, 263
+cmb_analysis/analysis/power_spectrum.py        61     14    77%   78-81, 120, 149-158, 176, 223, 244
+cmb_analysis/analysis/transfer.py              80     13    84%   94, 217-227, 245-252, 263
 cmb_analysis/constants.py                      78      1    99%   128
 cmb_analysis/cosmology/__init__.py              4      0   100%
 cmb_analysis/cosmology/base.py                 46     14    70%   82, 101, 148-159, 170, 174
@@ -1830,41 +2645,45 @@ cmb_analysis/utils/__init__.py                  3      3     0%   12-17
 cmb_analysis/utils/math.py                     85     85     0%   5-281
 cmb_analysis/utils/statistics.py              139    139     0%   5-440
 cmb_analysis/visualization/__init__.py          3      0   100%
-cmb_analysis/visualization/diagnostics.py     131     25    81%   56, 66, 90, 101, 162, 259-288, 359
-cmb_analysis/visualization/plotting.py         91     64    30%   76-95, 117-137, 159-179, 219, 247-272, 297-316, 334-335
+cmb_analysis/visualization/diagnostics.py     131     63    52%   56, 66, 85-101, 162, 259-288, 310-359
+cmb_analysis/visualization/plotting.py         91     32    65%   95, 179, 219, 247-272, 297-316, 334-335
 -------------------------------------------------------------------------
-TOTAL                                         965    515    47%
+TOTAL                                         976    477    51%
 
 =========================== short test summary info ============================
+FAILED tests/test_analysis.py::test_matter_transfer_function - assert np.False_
+ +  where np.False_ = <function isclose at 0x103f8df30>(np.float64(0.005344749466459605), 1.0, rtol=0.01)
+ +    where <function isclose at 0x103f8df30> = np.isclose
+FAILED tests/test_analysis.py::test_power_spectrum_computation - assert 2499 == 2498
+ +  where 2499 = len(array([nan, nan, nan, ..., nan, nan, nan]))
+ +  and   2498 = len(array([   2,    3,    4, ..., 2497, 2498, 2499]))
+FAILED tests/test_analysis.py::test_mcmc_analysis - TypeError: MCMCAnalysis.__init__() missing 1 required positional argument: 'param_info'
+FAILED tests/test_analysis.py::test_mcmc_convergence - TypeError: MCMCAnalysis.__init__() missing 1 required positional argument: 'param_info'
+FAILED tests/test_analysis.py::test_numerical_stability - AssertionError: assert np.False_
+ +  where np.False_ = <function all at 0x103f818b0>(array([False, False, False, ..., False, False, False]))
+ +    where <function all at 0x103f818b0> = np.all
+ +    and   array([False, False, False, ..., False, False, False]) = <ufunc 'isfinite'>(array([nan, nan, nan, ..., nan, nan, nan]))
+ +      where <ufunc 'isfinite'> = np.isfinite
+FAILED tests/test_analysis.py::test_acoustic_peaks[100] - assert np.float64(nan) > 0
+FAILED tests/test_analysis.py::test_acoustic_peaks[500] - assert np.float64(nan) > 0
+FAILED tests/test_analysis.py::test_acoustic_peaks[1000] - assert np.float64(nan) > 0
+FAILED tests/test_analysis.py::test_error_propagation - Failed: DID NOT RAISE <class 'ValueError'>
 FAILED tests/test_cosmology.py::test_hubble_parameter_array - TypeError: 'function' object is not subscriptable
-FAILED tests/test_cosmology.py::test_angular_diameter_distance - AttributeError: 'function' object has no attribute 'keys'
 FAILED tests/test_cosmology.py::test_lcdm_wcdm_consistency - AttributeError: 'function' object has no attribute 'copy'
 FAILED tests/test_cosmology.py::test_invalid_parameters - AttributeError: 'function' object has no attribute 'copy'
+FAILED tests/test_cosmology.py::test_physical_constraints[LCDM-params0] - ValueError: Missing required parameters: {'ns', 'tau', 'ln10As'}
+FAILED tests/test_cosmology.py::test_angular_diameter_distance - AttributeError: 'function' object has no attribute 'keys'
 FAILED tests/test_cosmology.py::test_omega_m_computation - TypeError: 'function' object is not subscriptable
 FAILED tests/test_cosmology.py::test_age_of_universe - TypeError: 'function' object is not subscriptable
-FAILED tests/test_cosmology.py::test_physical_constraints[LCDM-params0] - ValueError: Missing required parameters: {'ns', 'ln10As', 'tau'}
 FAILED tests/test_cosmology.py::test_error_handling - KeyError: 'omega_b'
+FAILED tests/test_visualization.py::test_power_spectra_plot - ValueError: Data has no positive values, and therefore cannot be log-scaled.
 FAILED tests/test_visualization.py::test_corner_plot - ValueError: Invalid RGBA argument: 0.00392156862745098
 FAILED tests/test_visualization.py::test_chain_evolution - RuntimeError: Failed to process string with tex because latex could not be found
-FAILED tests/test_visualization.py::test_autocorrelation_plot - RuntimeError: Failed to process string with tex because latex could not be found
 FAILED tests/test_visualization.py::test_convergence_metrics - RuntimeError: Failed to process string with tex because latex could not be found
-FAILED tests/test_visualization.py::test_diagnostic_summary - RuntimeError: Failed to process string with tex because latex could not be found
-ERROR tests/test_analysis.py::test_matter_transfer_function
-ERROR tests/test_analysis.py::test_radiation_transfer_function
-ERROR tests/test_analysis.py::test_power_spectrum_computation
-ERROR tests/test_analysis.py::test_mcmc_analysis
-ERROR tests/test_analysis.py::test_mcmc_convergence
-ERROR tests/test_analysis.py::test_numerical_stability
-ERROR tests/test_analysis.py::test_acoustic_peaks[100]
-ERROR tests/test_analysis.py::test_acoustic_peaks[500]
-ERROR tests/test_analysis.py::test_acoustic_peaks[1000]
-ERROR tests/test_analysis.py::test_error_propagation
-ERROR tests/test_visualization.py::test_power_spectra_plot
-ERROR tests/test_visualization.py::test_residuals_plot
-ERROR tests/test_visualization.py::test_save_publication_plots
-ERROR tests/test_visualization.py::test_plot_types[power_spectra]
-ERROR tests/test_visualization.py::test_plot_types[residuals]
-ERROR tests/test_visualization.py::test_plot_types[corner]
-ERROR tests/test_visualization.py::test_plot_types[chain_evolution]
-ERROR tests/test_visualization.py::test_plot_types[convergence]
-============= 13 failed, 10 passed, 1 warning, 18 errors in 15.15s =============
+FAILED tests/test_visualization.py::test_save_publication_plots - ValueError: Data has no positive values, and therefore cannot be log-scaled.
+FAILED tests/test_visualization.py::test_plot_types[power_spectra] - ValueError: Data has no positive values, and therefore cannot be log-scaled.
+FAILED tests/test_visualization.py::test_plot_types[residuals] - RuntimeError: Failed to process string with tex because latex could not be found
+FAILED tests/test_visualization.py::test_plot_types[corner] - ValueError: Invalid RGBA argument: 0.00392156862745098
+FAILED tests/test_visualization.py::test_plot_types[chain_evolution] - RuntimeError: Failed to process string with tex because latex could not be found
+FAILED tests/test_visualization.py::test_plot_types[convergence] - RuntimeError: Failed to process string with tex because latex could not be found
+================== 27 failed, 7 passed, 9 warnings in 30.51s ===================

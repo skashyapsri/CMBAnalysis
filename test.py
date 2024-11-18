@@ -1,60 +1,180 @@
 import numpy as np
+import matplotlib.pyplot as plt
 from cmb_analysis.cosmology import LCDM
-from cmb_analysis.analysis import PowerSpectrumCalculator
-from cmb_analysis.visualization import CMBPlotter
+from cmb_analysis.analysis import PowerSpectrumCalculator, MCMCAnalysis
+from cmb_analysis.visualization import CMBPlotter, MCMCDiagnostics
+from cmb_analysis.data import PlanckDataLoader
 
-# Step 1: Load the data from the file
-data_file = "COM_PowerSpect_CMB-base-plikHM-TTTEEE-lowl-lowE-lensing-minimum-theory_R3.01.txt"
-data = np.loadtxt(data_file, skiprows=1)
 
-# Data columns
-l = data[:, 0]       # Multipole moments (ell)
-Dl_tt = data[:, 1]   # TT Power spectrum values
-Dl_te = data[:, 2]   # TE Power spectrum values
-Dl_ee = data[:, 3]   # EE Power spectrum values
-# Error columns (for now, we assume that the error format applies to all spectra)
-dDl_tt_min = data[:, 4]  # Negative error for TT
-dDl_tt_plus = data[:, 5]  # Positive error for TT
+def main():
+    # Set up plotting style
+    plt.style.use('seaborn-v0_8-paper')
 
-# Step 2: Prepare the observed data and errors
-data_dict = {
-    'cl_tt': Dl_tt,
-    'cl_te': Dl_te,
-    'cl_ee': Dl_ee
-}
-errors_dict = {
-    'cl_tt': (np.abs(dDl_tt_min) + np.abs(dDl_tt_plus)) / 2,
-    # Assuming TE errors are similar
-    'cl_te': (np.abs(dDl_tt_min) + np.abs(dDl_tt_plus)) / 2,
-    # Assuming EE errors are similar
-    'cl_ee': (np.abs(dDl_tt_min) + np.abs(dDl_tt_plus)) / 2
-}
+    # 1. Load Planck Data
+    print("Loading Planck data...")
+    planck = PlanckDataLoader(data_dir="cmb_analysis/data/planck")
 
-# Step 3: Initialize the LCDM model
-model = LCDM()
-params = {
-    'H0': 67.32,
-    'omega_b': 0.02237,
-    'omega_cdm': 0.1200,
-    'tau': 0.0544,
-    'ns': 0.9649,
-    'ln10As': 3.044
-}
+    try:
+        # Load theoretical and observed spectra
+        theory_data = planck.load_theory_spectra()
+        observed_data = planck.load_observed_spectra()
 
-# Step 4: Compute theoretical power spectra
-calculator = PowerSpectrumCalculator()
-cl_tt, cl_ee, cl_te = calculator.compute_all_spectra(params)
+        # Get calibration factor
+        cal_factor = planck.get_calibration_factor()
+        print(f"Planck calibration factor: {cal_factor}")
 
-# Prepare theory dictionary with the spectra
-theory_dict = {
-    'cl_tt': cl_tt,
-    'cl_ee': cl_ee,
-    'cl_te': cl_te
-}
-print(theory_dict)
-# Step 5: Plot the power spectra
-plotter = CMBPlotter()
-fig = plotter.plot_power_spectra(theory=theory_dict, data=data_dict, errors=errors_dict)
+        # 2. Compare Theory with Data
+        print("\nPreparing theory and data comparison...")
+        plotter = CMBPlotter()
 
-# Optional: Save the plot
-plotter.save_publication_plots("cmb_power_spectra", fig)
+        # Prepare data for plotting
+        theory = {
+            'cl_tt': theory_data['tt'] * cal_factor**2,
+            'cl_te': theory_data['te'] * cal_factor**2,
+            'cl_ee': theory_data['ee'] * cal_factor**2
+        }
+
+        data = {
+            'cl_tt': observed_data['tt']['spectrum'],
+            'cl_te': observed_data['te']['spectrum'],
+            'cl_ee': observed_data['ee']['spectrum']
+        }
+
+        errors = {
+            'cl_tt': (observed_data['tt']['error_plus'] + observed_data['tt']['error_minus'])/2,
+            'cl_te': (observed_data['te']['error_plus'] + observed_data['te']['error_minus'])/2,
+            'cl_ee': (observed_data['ee']['error_plus'] + observed_data['ee']['error_minus'])/2
+        }
+
+        # Plot comparison
+        fig = plotter.plot_power_spectra(theory, data, errors)
+        plt.savefig('planck_spectra_comparison.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved power spectra comparison plot")
+
+        # 3. Compute and Plot Residuals
+        print("\nComputing residuals...")
+        fig = plotter.plot_residuals(theory, data, errors)
+        plt.savefig('planck_residuals.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved residuals plot")
+
+        # Compute chi-square
+        chi2 = planck.compute_chi_square(theory)
+        print("\nChi-square values:")
+        for spec, value in chi2.items():
+            print(f"{spec.upper()}: {value:.2f}")
+
+        # 4. Parameter Estimation
+        param_info = {
+            'H0': (67.32, 0.54),
+            'omega_b': (0.02237, 0.00015),
+            'omega_cdm': (0.1200, 0.0012),
+            'tau': (0.0544, 0.0073),
+            'ns': (0.9649, 0.0042),
+            'ln10As': (3.044, 0.014)
+        }
+        print("\nRunning MCMC analysis...")
+        calculator = PowerSpectrumCalculator()
+        data_mcmc = {
+            'tt_data': observed_data['tt']['spectrum'],
+            'tt_error': (observed_data['tt']['error_plus'] + observed_data['tt']['error_minus']) / 2,
+            'te_data': observed_data['te']['spectrum'],
+            'te_error': (observed_data['te']['error_plus'] + observed_data['te']['error_minus']) / 2,
+            'ee_data': observed_data['ee']['spectrum'],
+            'ee_error': (observed_data['ee']['error_plus'] + observed_data['ee']['error_minus']) / 2
+        }
+        mcmc = MCMCAnalysis(power_calculator=calculator,
+                            data=data_mcmc, param_info=param_info)
+
+        # Run MCMC
+        results = mcmc.run_mcmc()
+        print(type(results))
+        # Plot diagnostics
+        diagnostics = MCMCDiagnostics()
+
+        # Plot chain evolution
+        fig = diagnostics.plot_chain_evolution(
+            sampler=results, param_names=list(param_info.keys()))
+        plt.savefig('chain_evolution.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved chain evolution plot")
+
+        # Plot autocorrelation
+        fig = diagnostics.plot_autocorrelation(results, list(param_info.keys()))
+        plt.savefig('autocorrelation.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved autocorrelation plot")
+
+        # Plot convergence metrics
+        fig = diagnostics.plot_convergence_metrics(results, list(param_info.keys()))
+        plt.savefig('convergence_metrics.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved convergence metrics plot")
+
+        # Plot parameter evolution
+        fig = diagnostics.plot_parameter_evolution(results, list(param_info.keys()))
+        plt.savefig('parameter_evolution.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved parameter evolution plot")
+
+        # Plot diagnostic summary
+        acceptance_fraction = mcmc.compute_convergence_diagnostics()[
+            'acceptance_fraction']
+        fig = diagnostics.plot_diagnostic_summary(
+            results, list(param_info.keys()), acceptance_fraction)
+        plt.savefig('diagnostic_summary.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved diagnostic summary plot")
+
+        # Plot parameter constraints
+        fig = diagnostics.plot_parameter_constraints(results, list(param_info.keys()))
+        plt.savefig('parameter_constraints.png', bbox_inches='tight', dpi=300)
+        plt.close()
+        print("Saved parameter constraints plot")
+
+        # Extract best-fit parameters from MCMC results
+        # Reshape to [n_params, n_samples]
+        chain = results.coords.T.reshape(len(param_info), -1)
+        log_prob = results.log_prob
+        best_idx = np.argmax(log_prob)  # Get index of highest likelihood sample
+        best_fit_params = {
+            name: chain[i, best_idx]
+            for i, name in enumerate(param_info.keys())
+        }
+        print("\nBest-fit parameters:")
+        for param, value in best_fit_params.items():
+            print(f"{param}: {value:.6f}")
+
+        # Compute best-fit theoretical power spectrum
+        cl_tt_fit, cl_ee_fit, cl_te_fit = calculator.compute_all_spectra(
+            best_fit_params)
+
+        theory_fit = {
+            'cl_tt': cl_tt_fit,
+            'cl_te': cl_te_fit,
+            'cl_ee': cl_ee_fit
+        }
+
+        # Load ACDM image and get axes
+        acdm_fig, acdm_ax = plt.subplots(figsize=(10, 8))
+
+        # Plot best-fit theory spectrum with data
+        plotter.plot_power_spectra(theory_fit, data, errors)
+
+        # Customize plot
+        acdm_ax.set_title('ΛCDM Fit to Planck Data')
+
+        # Save plot
+        plt.savefig('acdm_fit.png', dpi=300, bbox_inches='tight')
+        plt.close()
+
+        print("Saved ΛCDM fit plot")
+
+    except Exception as e:
+        print(f"Error during analysis: {str(e)}")
+        raise
+
+
+if __name__ == "__main__":
+    main()

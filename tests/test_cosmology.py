@@ -9,6 +9,62 @@ from numpy.testing import assert_allclose, assert_array_almost_equal
 from cmb_analysis.cosmology import LCDM, wCDM
 from cmb_analysis.constants import constants
 
+"""
+Tests for cosmological models.
+"""
+
+
+def test_hubble_parameter_array(fiducial_params):
+    """Test Hubble parameter computation with array input."""
+    model = LCDM()
+    z = np.linspace(0, 2, 100)
+    H = model.H(z, fiducial_params)
+
+    assert len(H) == len(z)
+    assert np.all(H > 0)
+    assert np.all(np.diff(H) > 0)  # H(z) should be monotonically increasing
+
+
+def test_lcdm_wcdm_consistency(fiducial_params):
+    """Test that wCDM reduces to ΛCDM when w = -1."""
+    z = np.linspace(0, 2, 100)
+
+    lcdm = LCDM()
+    wcdm = wCDM()
+
+    # Add w = -1 to parameters
+    wcdm_params = fiducial_params.copy()
+    wcdm_params['w'] = -1.0
+
+    H_lcdm = lcdm.H(z, fiducial_params)
+    H_wcdm = wcdm.H(z, wcdm_params)
+
+    assert_array_almost_equal(H_lcdm, H_wcdm)
+
+
+def test_invalid_parameters():
+    """Test handling of invalid parameters."""
+    model = LCDM()
+    params = {'H0': -70}  # Invalid negative Hubble constant
+
+    with pytest.raises(ValueError):
+        model.validate_parameters(params)
+
+
+def test_physical_constraints(fiducial_params):
+    """Test physical constraints and consistency relations."""
+    model = LCDM()
+    z = np.linspace(0, 1000, 1000)
+
+    # Test Hubble parameter evolution
+    H = model.H(z, fiducial_params)
+    assert np.all(np.diff(H) > 0)  # H(z) should increase with z
+
+    # Test angular diameter distance
+    D_A = np.array([model.angular_diameter_distance(zi, fiducial_params)
+                    for zi in z[1:]])
+    assert np.all(np.diff(D_A) < 0)  # D_A should decrease after reaching maximum
+
 
 @pytest.fixture
 def fiducial_params():

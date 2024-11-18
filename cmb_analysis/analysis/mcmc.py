@@ -44,8 +44,8 @@ class MCMCAnalysis:
         self.param_info = param_info
 
         # MCMC settings
-        self.nwalkers = 32
-        self.nsteps = 2000
+        self.nwalkers = 64
+        self.nsteps = 1000
         self.ndim = len(param_info)
 
         # Initialize sampler
@@ -99,6 +99,11 @@ class MCMCAnalysis:
             # Compute theoretical spectra
             cl_tt, cl_ee, cl_te = self.calculator.compute_all_spectra(params)
 
+            # Truncate theoretical spectra to match observed data length
+            cl_tt = cl_tt[:len(self.data['tt_data'])]
+            cl_te = cl_te[:len(self.data['te_data'])]
+            cl_ee = cl_ee[:len(self.data['ee_data'])]
+
             # Compute chi-square
             chi2_tt = self.calculator.compute_chi_square(
                 cl_tt, self.data['tt_data'], self.data['tt_error']
@@ -135,7 +140,7 @@ class MCMCAnalysis:
             return -np.inf
         return lp + self.log_likelihood(theta)
 
-    def run_mcmc(self, progress: bool = True) -> None:
+    def run_mcmc(self, progress: bool = True) -> ArrayLike:
         """
         Run MCMC analysis.
 
@@ -143,6 +148,11 @@ class MCMCAnalysis:
         ----------
         progress : bool, optional
             Whether to show progress bar
+
+        Returns
+        -------
+        array-like
+            MCMC chain with shape (steps, walkers, parameters)
         """
         print("Starting MCMC analysis...")
 
@@ -161,6 +171,7 @@ class MCMCAnalysis:
                 progress=progress
             )
             print("MCMC complete!")
+            return self.chain
         except Exception as e:
             print(f"Error during MCMC sampling: {e}")
             raise

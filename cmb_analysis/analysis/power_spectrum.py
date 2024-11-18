@@ -12,233 +12,158 @@ from .transfer import CosmicTransferFunctions
 
 
 class PowerSpectrumCalculator:
-    """
-    Calculator for CMB power spectra (TT, TE, EE).
-
-    This class handles the computation of theoretical CMB power spectra,
-    including:
-    - Temperature auto-correlation (TT)
-    - Temperature-E-mode cross-correlation (TE)
-    - E-mode auto-correlation (EE)
-    """
+    """Calculator for CMB power spectra (TT, TE, EE)."""
 
     def __init__(self, transfer_functions: Optional[CosmicTransferFunctions] = None) -> None:
-        """
-        Initialize power spectrum calculator.
-
-        Parameters
-        ----------
-        transfer_functions : CosmicTransferFunctions, optional
-            Pre-initialized transfer function calculator
-        """
+        """Initialize power spectrum calculator."""
         self.transfer = transfer_functions or CosmicTransferFunctions()
         self.ell_max = 2500
-        self.k_max = 10.0  # Maximum k in h/Mpc
+        self.k_max = 10.0
         self.setup_integration()
 
     def setup_integration(self) -> None:
         """Set up integration grids and weights."""
-        # Set up k integration grid
-        self.k_grid = np.logspace(-4, np.log10(self.k_max), 1000)
-
-        # Set up ell values
+        # Set up k integration grid with adaptive sampling
+        k_low = np.logspace(-4, -2, 1000)  # Dense sampling at low k
+        k_mid = np.logspace(-2, 0, 2000)   # Medium sampling
+        k_high = np.logspace(0, np.log10(self.k_max), 1000)  # Sparse at high k
+        self.k_grid = np.unique(np.concatenate([k_low, k_mid, k_high]))
         self.ell = np.arange(2, self.ell_max + 1)
 
     def compute_all_spectra(self, params: Dict[str, float]) -> Tuple[ArrayLike, ArrayLike, ArrayLike]:
-        """
-        Compute all CMB power spectra.
-
-        Parameters
-        ----------
-        params : dict
-            Cosmological parameters
-
-        Returns
-        -------
-        tuple
-            TT, TE, and EE power spectra
-        """
+        """Compute spectra with improved numerical stability."""
         try:
-            # Get transfer functions
             k = self.k_grid
-            T_m = self.transfer.matter_transfer(k, params)
-            T_r = self.transfer.radiation_transfer(k, params)
+
+            # Get transfer functions with stability checks
+            T_m = np.nan_to_num(self.transfer.matter_transfer(k, params))
+            T_r = np.nan_to_num(self.transfer.radiation_transfer(k, params))
+
+            # Compute primordial spectrum with logarithmic handling
+            ln_As = params['ln10As'] + np.log(1e-10)
+            n_s = params['ns']
+            ln_P_prim = ln_As + (n_s - 1) * np.log(k/0.05)
+            P_prim = np.exp(ln_P_prim)
 
             # Add reionization effects
             tau = params['tau']
             damping = np.exp(-2*tau)
 
-            # Primordial spectrum
-            A_s = np.exp(params['ln10As']) * 1e-10
-            n_s = params['ns']
-            P_prim = A_s * (k/0.05)**(n_s-1)
-
-            # Compute spectra with numerical stability
+            # Compute spectra in log space where appropriate
             cl_tt = self._compute_tt_spectrum(k, P_prim, T_m, T_r, damping)
             cl_ee = self._compute_ee_spectrum(k, P_prim, T_m, T_r, damping, tau)
             cl_te = self._compute_te_spectrum(cl_tt, cl_ee)
 
+            # Apply physical constraints
+            cl_tt = np.maximum(cl_tt, 1e-30)
+            cl_ee = np.maximum(cl_ee, 1e-30)
+            cl_te = np.clip(cl_te, -np.sqrt(cl_tt * cl_ee), np.sqrt(cl_tt * cl_ee))
+
             return cl_tt, cl_ee, cl_te
 
         except Exception as e:
-            warnings.warn(f"Error in power spectrum computation: {e}")
-            return (np.full(len(self.ell), np.nan),
-                    np.full(len(self.ell), np.nan),
-                    np.full(len(self.ell), np.nan))
+            print(f"Power spectrum computation error: {str(e)}")
+            return [np.full(len(self.ell), np.nan) for _ in range(3)]
 
     def _compute_tt_spectrum(self, k: ArrayLike, P_prim: ArrayLike,
                              T_m: ArrayLike, T_r: ArrayLike, damping: float) -> ArrayLike:
-        """
-        Compute temperature power spectrum.
+        """Improved temperature spectrum computation."""
+        try:
+            # Use log-space integration where possible
+            ln_integrand = np.log(P_prim) + 2*np.log(np.abs(T_m)
+                                                     ) + 2*np.log(np.abs(T_r))
+            integrand = np.exp(ln_integrand)
 
-        Parameters
-        ----------
-        k : array-like
-            Wavenumbers
-        P_prim : array-like
-            Primordial power spectrum
-        T_m : array-like
-            Matter transfer function
-        T_r : array-like
-            Radiation transfer function
-        damping : float
-            Reionization damping factor
+            # Vectorized integration over k
+            cl = np.zeros(len(self.ell))
+            for i, l in enumerate(self.ell):
+                weight = self._spherical_bessel(l, k)
+                cl[i] = damping * integrate.simpson(y=integrand * weight**2, x=k)
 
-        Returns
-        -------
-        array-like
-            TT power spectrum
-        """
-        integrand = P_prim * T_m**2 * T_r**2
+            return cl * 2 * np.pi * 1e10
 
-        # Perform k integration for each ell
-        cl = np.zeros(len(self.ell))
-        for i, l in enumerate(self.ell):
-            weight = self._spherical_bessel(l, k)
-            cl[i] = damping * integrate.simps(integrand * weight**2, k)
-
-        return np.maximum(cl * 1e12, 1e-30)  # Convert to μK²
+        except Exception as e:
+            print(f"Error in TT spectrum computation: {str(e)}")
+            return np.full(len(self.ell), np.nan)
 
     def _compute_ee_spectrum(self, k: ArrayLike, P_prim: ArrayLike,
                              T_m: ArrayLike, T_r: ArrayLike, damping: float,
                              tau: float) -> ArrayLike:
-        """
-        Compute E-mode polarization power spectrum.
+        """Compute E-mode polarization power spectrum."""
+        try:
+            # Polarization source
+            pol_source = (1 - np.exp(-tau))**2
 
-        Parameters
-        ----------
-        k : array-like
-            Wavenumbers
-        P_prim : array-like
-            Primordial power spectrum
-        T_m : array-like
-            Matter transfer function
-        T_r : array-like
-            Radiation transfer function
-        damping : float
-            Reionization damping factor
-        tau : float
-            Optical depth to reionization
+            # Use log-space computation where possible
+            ln_integrand = np.log(P_prim) + 2*np.log(np.abs(T_m)
+                                                     ) + 2*np.log(np.abs(T_r))
+            integrand = np.exp(ln_integrand) * pol_source
 
-        Returns
-        -------
-        array-like
-            EE power spectrum
-        """
-        # Polarization source
-        pol_source = (1 - np.exp(-tau))**2
-        integrand = P_prim * T_m**2 * T_r**2 * pol_source
+            # Vectorized integration over k
+            cl = np.zeros(len(self.ell))
+            for i, l in enumerate(self.ell):
+                weight = self._spherical_bessel(l, k)
+                cl[i] = damping * integrate.simpson(y=integrand * weight**2, x=k)
 
-        # Perform k integration for each ell
-        cl = np.zeros(len(self.ell))
-        for i, l in enumerate(self.ell):
-            weight = self._spherical_bessel(l, k)
-            cl[i] = damping * integrate.simps(integrand * weight**2, k)
+            return np.maximum(cl * 2 * np.pi * 1e10, 1e-30)
 
-        return np.maximum(cl * 1e12, 1e-30)  # Convert to μK²
+        except Exception as e:
+            print(f"Error in EE spectrum computation: {str(e)}")
+            return np.full(len(self.ell), np.nan)
 
     def _compute_te_spectrum(self, cl_tt: ArrayLike, cl_ee: ArrayLike) -> ArrayLike:
-        """
-        Compute temperature-E-mode cross spectrum.
+        """Compute temperature-E-mode cross spectrum."""
+        try:
+            # Ensure proper sign handling
+            sign_tt = np.sign(cl_tt)
+            amplitude = np.sqrt(np.abs(cl_tt * cl_ee))
 
-        Parameters
-        ----------
-        cl_tt : array-like
-            Temperature power spectrum
-        cl_ee : array-like
-            E-mode power spectrum
+            # Apply physical constraints
+            te_spec = sign_tt * amplitude
+            max_te = np.sqrt(np.abs(cl_tt * cl_ee))
 
-        Returns
-        -------
-        array-like
-            TE cross-spectrum
-        """
-        return np.sign(cl_tt) * np.sqrt(np.abs(cl_tt * cl_ee))
+            return np.clip(te_spec, -max_te, max_te)
+
+        except Exception as e:
+            print(f"Error in TE spectrum computation: {str(e)}")
+            return np.full(len(self.ell), np.nan)
 
     def _spherical_bessel(self, l: int, k: ArrayLike) -> ArrayLike:
-        """
-        Compute spherical Bessel function for power spectrum integration.
+        """Compute spherical Bessel function with improved stability."""
+        try:
+            x = k * self.transfer.r_s
+            y = np.zeros_like(x)
 
-        Parameters
-        ----------
-        l : int
-            Multipole moment
-        k : array-like
-            Wavenumbers
+            # Small x approximation
+            small_x = x < 0.1
+            y[small_x] = x[small_x]**l / (2*l + 1)
 
-        Returns
-        -------
-        array-like
-            Spherical Bessel function values
-        """
-        x = k * self.transfer.r_s
+            # Large x approximation
+            large_x = x >= 0.1
+            y[large_x] = np.sin(x[large_x] - l*np.pi/2) / (x[large_x] + 1e-30)
 
-        # Asymptotic forms for numerical stability
-        y = np.zeros_like(x)
+            return y
 
-        # Small x approximation
-        small_x = x < 0.1
-        y[small_x] = x[small_x]**l / (2*l + 1)
-
-        # Large x approximation
-        large_x = x >= 0.1
-        y[large_x] = np.sin(x[large_x] - l*np.pi/2) / x[large_x]
-
-        return y
+        except Exception as e:
+            print(f"Error in Bessel function computation: {str(e)}")
+            return np.zeros_like(k)
 
     def get_dimensionless_power(self, cl_values: ArrayLike) -> ArrayLike:
-        """
-        Convert C_l to dimensionless power spectrum D_l.
-
-        Parameters
-        ----------
-        cl_values : array-like
-            C_l power spectrum
-
-        Returns
-        -------
-        array-like
-            D_l = l(l+1)C_l/(2π)
-        """
+        """Convert C_l to dimensionless power spectrum D_l."""
         return self.ell * (self.ell + 1) * cl_values / (2 * np.pi)
 
     def compute_chi_square(self, theory: ArrayLike, data: ArrayLike,
                            error: ArrayLike) -> float:
-        """
-        Compute χ² between theory and data.
+        """Compute χ² between theory and data."""
+        # Ensure all arrays have matching lengths
+        min_len = min(len(theory), len(data), len(error))
+        theory = theory[:min_len]
+        data = data[:min_len]
+        error = error[:min_len]
 
-        Parameters
-        ----------
-        theory : array-like
-            Theoretical power spectrum
-        data : array-like
-            Observed power spectrum
-        error : array-like
-            Uncertainties in observed spectrum
+        # Mask out invalid points
+        mask = (error > 0) & np.isfinite(data) & np.isfinite(error)
+        if not np.any(mask):
+            return np.inf
 
-        Returns
-        -------
-        float
-            χ² value
-        """
-        return np.sum(((data - theory) / error)**2)
+        return np.sum(((data[mask] - theory[mask]) / error[mask])**2)

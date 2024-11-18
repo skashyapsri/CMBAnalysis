@@ -1,335 +1,308 @@
-"""
-Comprehensive plotting utilities for CMB analysis.
-"""
-
-from typing import Dict, List, Tuple, Optional, Union
 import numpy as np
-from numpy.typing import ArrayLike
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from matplotlib.figure import Figure
-from matplotlib.axes import Axes
 import seaborn as sns
-import corner
-from scipy import stats
-import warnings
+from typing import Dict, Optional
+from numpy.typing import ArrayLike
 
 
 class CMBPlotter:
-    """
-    Comprehensive plotting utilities for CMB analysis results.
-
-    This class provides methods for creating publication-quality plots of:
-    - CMB power spectra
-    - Parameter constraints
-    - Residuals analysis
-    - Theory comparisons
-    """
+    """Enhanced CMB power spectra plotter with improved formatting."""
 
     def __init__(self) -> None:
         """Initialize plotting configuration."""
         self.setup_style()
-        self.colors = sns.color_palette("colorblind")
-        self.fig_size = (12, 8)
+        self.fig_size = (12, 15)
+        self.colors = {
+            'tt': '#1f77b4',  # blue
+            'te': '#2ca02c',  # green
+            'ee': '#ff7f0e'   # orange
+        }
+        # Add spectrum-specific limits
+        self.ylims = {
+            'tt': (10, 1e4),
+            'te': (-150, 150),
+            'ee': (1e-1, 1e2)
+        }
 
     def setup_style(self) -> None:
-        """Configure matplotlib style for publication-quality plots."""
-        plt.style.use('seaborn-v0_8-paper')
+        """Configure matplotlib style for publication quality plots."""
+        plt.style.use('seaborn-v0_8-darkgrid')
         plt.rcParams.update({
-            'font.family': 'serif',
+            'font.family': 'sans-serif',
             'font.size': 12,
             'axes.labelsize': 14,
             'axes.titlesize': 16,
             'xtick.labelsize': 12,
             'ytick.labelsize': 12,
             'legend.fontsize': 12,
-            'figure.figsize': (12, 8),
+            'figure.figsize': (12, 15),
             'figure.dpi': 100,
-            'text.usetex': True,
+            'text.usetex': False,
+            'mathtext.default': 'regular',
             'axes.grid': True,
-            'grid.alpha': 0.3
+            'grid.alpha': 0.3,
+            'axes.linewidth': 1.5,
+            'lines.linewidth': 2
         })
 
-    def plot_power_spectra(self, theory: Dict[str, ArrayLike],
-                           data: Dict[str, ArrayLike],
-                           errors: Dict[str, ArrayLike],
-                           fig: Optional[Figure] = None) -> Figure:
+    def _validate_data(self, theory: Dict[str, np.ndarray],
+                       data: Dict[str, np.ndarray],
+                       errors: Dict[str, np.ndarray]) -> None:
+        """Validate input data consistency."""
+        for spec in ['tt', 'te', 'ee']:
+            key = f'cl_{spec}'
+            if key not in theory or key not in data or key not in errors:
+                raise ValueError(f"Missing {key} in input data")
+            if len(data[key]) != len(errors[key]):
+                raise ValueError(f"Data and error length mismatch for {key}")
+            if len(theory[key]) < len(data[key]):
+                raise ValueError(f"Theory spectrum too short for {key}")
+
+    def plot_theory_spectrum(self, ax, spec_type: str, theory: Dict[str, ArrayLike], color: str = 'red') -> None:
+        spec_key = f'cl_{spec_type.lower()}'
+
+        # Separate ell ranges for theory
+        ell_theory = np.arange(len(theory[spec_key]))
+
+        # Calculate D_l factors
+        dl_factor_theory = ell_theory * (ell_theory + 1) / (2 * np.pi)
+
+        # Apply conversions
+        theory_dl = theory[spec_key] * dl_factor_theory
+
+        # Plot theory curve
+        ax.plot(ell_theory, theory_dl, color=color, label=r'$\Lambda$CDM fit')
+
+    def plot_power_spectra(self, theory: Dict[str, np.ndarray],
+                           data: Dict[str, np.ndarray],
+                           errors: Dict[str, np.ndarray]) -> plt.Figure:
         """
-        Plot CMB power spectra with data and theory comparison.
+            Plot CMB power spectra with proper scaling and formatting.
 
-        Parameters
-        ----------
-        theory : dict
-            Dictionary containing theoretical spectra (TT, TE, EE)
-        data : dict
-            Dictionary containing observed spectra
-        errors : dict
-            Dictionary containing observational errors
-        fig : Figure, optional
-            Existing figure to plot on
+            Parameters
+            ----------
+            theory : dict
+                Dictionary containing theoretical Cℓ values
+            data : dict
+                Dictionary containing observed Cℓ values
+            errors : dict
+                Dictionary containing error estimates
+            """
+        fig, axes = plt.subplots(3, 1, figsize=(12, 15), sharex=True)
 
-        Returns
-        -------
-        Figure
-            Matplotlib figure object
-        """
-        if fig is None:
-            fig = plt.figure(figsize=(15, 10))
+        # Common x-axis settings
+        for ax in axes:
+            ax.set_xscale('log')
+            ax.grid(True, alpha=0.3)
+            ax.set_xlabel('Multipole ℓ')
 
-        gs = gridspec.GridSpec(2, 2, height_ratios=[2, 1])
+        # Get ℓ range
+        ell = np.arange(len(theory['cl_tt']))
+        ell_factor = ell * (ell + 1) / (2 * np.pi)
 
-        # TT spectrum
-        ax_tt = fig.add_subplot(gs[0, 0])
-        self._plot_spectrum(ax_tt, 'TT', theory, data, errors)
+        # TT spectrum (top panel)
+        ax = axes[0]
+        # Convert to Dℓ = ℓ(ℓ+1)Cℓ/(2π)
+        theory_tt = theory['cl_tt'] * ell_factor
+        data_tt = data['cl_tt'] * ell_factor[: len(data['cl_tt'])]
+        errors_tt = errors['cl_tt'] * ell_factor[: len(errors['cl_tt'])]
 
-        # TE spectrum
-        ax_te = fig.add_subplot(gs[0, 1])
-        self._plot_spectrum(ax_te, 'TE', theory, data, errors)
+        ax.set_yscale('log')
+        ax.plot(ell, theory_tt, color=self.colors['tt'], label='Theory')
+        ax.errorbar(ell[:len(data_tt)], data_tt, yerr=errors_tt,
+                    fmt='.', color='gray', alpha=0.5, label='Data')
+        ax.set_ylabel(r'$D_\ell^{TT}$ [$\mu$K$^2$]')
+        ax.set_title('Temperature Power Spectrum (TT)')
+        ax.legend()
 
-        # EE spectrum
-        ax_ee = fig.add_subplot(gs[1, :])
-        self._plot_spectrum(ax_ee, 'EE', theory, data, errors)
+        # TE spectrum (middle panel)
+        ax = axes[1]
+        theory_te = theory['cl_te'] * ell_factor
+        data_te = data['cl_te'] * ell_factor[: len(data['cl_te'])]
+        errors_te = errors['cl_te'] * ell_factor[: len(errors['cl_te'])]
+
+        ax.plot(ell, theory_te, color=self.colors['te'])
+        ax.errorbar(ell[:len(data_te)], data_te, yerr=errors_te,
+                    fmt='.', color='gray', alpha=0.5)
+        ax.set_ylabel(r'$D_\ell^{TE}$ [$\mu$K$^2$]')
+        ax.set_title('Temperature-E-mode Cross Spectrum (TE)')
+
+        # EE spectrum (bottom panel)
+        ax = axes[2]
+        theory_ee = theory['cl_ee'] * ell_factor
+        data_ee = data['cl_ee'] * ell_factor[: len(data['cl_ee'])]
+        errors_ee = errors['cl_ee'] * ell_factor[: len(errors['cl_ee'])]
+
+        ax.set_yscale('log')
+        ax.plot(ell, theory_ee, color=self.colors['ee'])
+        ax.errorbar(ell[:len(data_ee)], data_ee, yerr=errors_ee,
+                    fmt='.', color='gray', alpha=0.5)
+        ax.set_ylabel(r'$D_\ell^{EE}$ [$\mu$K$^2$]')
+        ax.set_title('E-mode Power Spectrum (EE)')
 
         # Adjust layout
         plt.tight_layout()
         return fig
 
-    def _plot_spectrum(self, ax: Axes, spec_type: str,
+    def _plot_spectrum(self, ax, spec_type: str,
                        theory: Dict[str, ArrayLike],
                        data: Dict[str, ArrayLike],
                        errors: Dict[str, ArrayLike]) -> None:
         """
-        Plot individual power spectrum.
+        Plot individual power spectrum with enhanced formatting.
 
         Parameters
         ----------
         ax : Axes
-            Matplotlib axes object
+            Matplotlib axes to plot on
         spec_type : str
             Type of spectrum (TT, TE, or EE)
         theory : dict
-            Theoretical spectra
+            Theoretical power spectrum
         data : dict
-            Observed spectra
+            Observed power spectrum
         errors : dict
-            Observational errors
+            Measurement uncertainties
         """
-        ell = np.arange(len(theory[f'cl_{spec_type.lower()}']))
+        spec_key = f'cl_{spec_type.lower()}'
 
-        # Plot data points with errors
-        ax.errorbar(ell, data[f'cl_{spec_type.lower()}'],
-                    yerr=errors[f'cl_{spec_type.lower()}'],
-                    fmt='k.', alpha=0.3, label='Data')
+        # Separate ell ranges for theory and data
+        ell_theory = np.arange(len(theory[spec_key]))
+        ell_data = np.arange(len(data[spec_key]))
+
+        # Calculate D_l factors separately
+        dl_factor_theory = ell_theory * (ell_theory + 1) / (2 * np.pi)
+        dl_factor_data = ell_data * (ell_data + 1) / (2 * np.pi)
+
+        # Apply conversions separately
+        theory_dl = theory[spec_key] * dl_factor_theory
+        data_dl = data[spec_key] * dl_factor_data
+        errors_dl = errors[spec_key] * dl_factor_data  # Using same ell as data
 
         # Plot theory curve
-        ax.plot(ell, theory[f'cl_{spec_type.lower()}'],
-                color=self.colors[0], label='Theory')
+        ax.plot(ell_theory, theory_dl,
+                color=self.colors[0],
+                label='Theory',
+                linewidth=2,
+                zorder=2)
 
-        # Customize plot
-        ax.set_xlabel(r'$\ell$')
-        ax.set_ylabel(rf'$D_{{\ell}}^{{{spec_type}}}$ [$\mu$K$^2$]')
+        # Plot data points with error bars
+        ax.errorbar(ell_data[::20], data_dl[::20],  # Plot fewer points for clarity
+                    yerr=errors_dl[::20],
+                    fmt='k.',
+                    markersize=4,
+                    alpha=0.5,
+                    label='Data',
+                    zorder=1)
 
+        # Set scales
+        ax.set_xscale('log')
         if spec_type != 'TE':
             ax.set_yscale('log')
-        ax.set_xscale('log')
 
-        ax.legend()
-        ax.grid(True, alpha=0.3)
+        # Set appropriate axis limits and labels
+        ax.set_xlim(2, 2500)
+        if spec_type == 'TT':
+            ax.set_ylim(10, 10000)
+        elif spec_type == 'EE':
+            ax.set_ylim(0.1, 100)
+        elif spec_type == 'TE':
+            ax.set_ylim(-200, 200)
 
-    def plot_residuals(self, theory: Dict[str, ArrayLike],
-                       data: Dict[str, ArrayLike],
-                       errors: Dict[str, ArrayLike]) -> Figure:
-        """
-        Plot residuals between theory and data.
+        ax.set_xlabel('Multipole ℓ')
+        ax.set_ylabel(f'D_ℓ {spec_type} [μK²]')
 
-        Parameters
-        ----------
-        theory : dict
-            Theoretical spectra
-        data : dict
-            Observed spectra
-        errors : dict
-            Observational errors
+        # Enhance grid and legend
+        ax.grid(True, alpha=0.3, which='both')
+        ax.legend(frameon=True, loc='upper right',
+                  bbox_to_anchor=(0.98, 0.98))
 
-        Returns
-        -------
-        Figure
-            Matplotlib figure object
-        """
-        fig, axes = plt.subplots(3, 1, figsize=(12, 12), sharex=True)
+        # Add minor ticks
+        ax.minorticks_on()
 
-        for i, spec_type in enumerate(['TT', 'TE', 'EE']):
-            spec_key = f'cl_{spec_type.lower()}'
-            residuals = (data[spec_key] - theory[spec_key]) / errors[spec_key]
+        # Enhance spine visibility
+        for spine in ax.spines.values():
+            spine.set_linewidth(1.5)
 
-            axes[i].axhline(y=0, color='k', linestyle='--', alpha=0.5)
-            axes[i].fill_between(np.arange(len(residuals)),
-                                 -1, 1, color='gray', alpha=0.2)
-            axes[i].fill_between(np.arange(len(residuals)),
-                                 -2, 2, color='gray', alpha=0.1)
+    def plot_residuals(self, theory: Dict[str, np.ndarray],
+                       data: Dict[str, np.ndarray],
+                       errors: Dict[str, np.ndarray]) -> plt.Figure:
+        """Plot residuals with proper χ² calculation."""
+        # Validate input data
+        self._validate_data(theory, data, errors)
 
-            axes[i].plot(np.arange(len(residuals)), residuals,
-                         'k.', alpha=0.5)
+        fig, axes = plt.subplots(3, 1, figsize=self.fig_size, sharex=True)
 
-            axes[i].set_ylabel(f'{spec_type} Residuals (sigma)')
-            axes[i].grid(True, alpha=0.3)
+        specs = ['tt', 'te', 'ee']
+        for idx, spec in enumerate(specs):
+            ax = axes[idx]
+            spec_key = f'cl_{spec}'
 
-        axes[-1].set_xlabel(r'$\ell$')
-        plt.tight_layout()
-        return fig
+            # Get data length and ell range
+            data_length = len(data[spec_key])
+            ell = np.arange(2, data_length + 2)  # Start from ℓ=2
 
-    def plot_corner(self, samples: ArrayLike,
-                    labels: List[str],
-                    truths: Optional[ArrayLike] = None) -> Figure:
-        """
-        Create corner plot for parameter constraints.
+            # Calculate ell factor
+            ell_factor = ell * (ell + 1) / (2 * np.pi)
 
-        Parameters
-        ----------
-        samples : array-like
-            MCMC samples
-        labels : list
-            Parameter labels
-        truths : array-like, optional
-            True parameter values
+            # Convert to Dℓ and compute residuals
+            theory_dl = theory[spec_key][:data_length] * ell_factor
+            data_dl = data[spec_key] * ell_factor
+            errors_dl = errors[spec_key] * ell_factor
 
-        Returns
-        -------
-        Figure
-            Corner plot figure
-        """
-        # Create corner plot with customization
-        fig = corner.corner(
-            samples,
-            labels=labels,
-            quantiles=[0.16, 0.5, 0.84],
-            show_titles=True,
-            title_kwargs={"fontsize": 12},
-            label_kwargs={"fontsize": 12},
-            truths=truths,
-            truth_color='red',
-            plot_datapoints=True,
-            fill_contours=True,
-            levels=(0.68, 0.95),
-            color=self.colors[0],
-            hist_kwargs={'color': self.colors[0]},
-            smooth=1
-        )
+            # Compute normalized residuals
+            residuals = (data_dl - theory_dl) / errors_dl
 
-        return fig
+            # Calculate χ²/dof excluding NaN values
+            valid_mask = np.isfinite(residuals)
+            if np.any(valid_mask):
+                chi2 = np.sum(residuals[valid_mask]**2)
+                dof = np.sum(valid_mask)
+                chi2_dof = chi2 / dof
+            else:
+                chi2_dof = np.nan
 
-    def plot_best_fit_comparison(self, ell: ArrayLike,
-                                 data: ArrayLike,
-                                 best_fit: ArrayLike,
-                                 error: ArrayLike,
-                                 title: str = "") -> Figure:
-        """
-        Plot comparison between data and best-fit model.
+            # Plot residuals
+            ax.errorbar(ell, residuals, yerr=1.0, fmt='.',
+                        color=self.colors[spec], alpha=0.5)
 
-        Parameters
-        ----------
-        ell : array-like
-            Multipole moments
-        data : array-like
-            Observed spectrum
-        best_fit : array-like
-            Best-fit theoretical spectrum
-        error : array-like
-            Observational errors
-        title : str, optional
-            Plot title
+            # Set scales and limits
+            ax.set_xscale('log')
+            ax.set_xlim(2, 2500)
+            ax.set_ylim(-5, 5)
 
-        Returns
-        -------
-        Figure
-            Comparison plot figure
-        """
-        fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10),
-                                       height_ratios=[3, 1],
-                                       sharex=True)
+            # Labels and formatting
+            ax.set_xlabel('Multipole ℓ')
+            ax.set_ylabel(rf'$\Delta D_{{\ell}}^{{{spec.upper()}}}/\sigma$')
+            ax.set_title(f'{spec.upper()} Residuals (χ²/dof = {chi2_dof:.2f})')
 
-        # Upper panel: data and best fit
-        ax1.errorbar(ell, data, yerr=error,
-                     fmt='k.', alpha=0.3, label='Data')
-        ax1.plot(ell, best_fit, color=self.colors[0],
-                 label='Best fit')
-
-        ax1.set_ylabel(r'$D_\ell$ [$\mu$K$^2$]')
-        ax1.set_yscale('log')
-        ax1.legend()
-        ax1.set_title(title)
-
-        # Lower panel: residuals
-        residuals = (data - best_fit) / error
-        ax2.axhline(y=0, color='k', linestyle='--', alpha=0.5)
-        ax2.fill_between(ell, -1, 1, color='gray', alpha=0.2)
-        ax2.plot(ell, residuals, 'k.', alpha=0.5)
-
-        ax2.set_xlabel(r'$\ell$')
-        ax2.set_ylabel(r'Residuals ($\sigma$)')
+            # Add zero line and grid
+            ax.axhline(y=0, color='black', linestyle='-', alpha=0.3)
+            ax.grid(True, alpha=0.3, which='both')
+            ax.minorticks_on()
 
         plt.tight_layout()
         return fig
 
-    def plot_theory_variation(self, ell: ArrayLike,
-                              samples: ArrayLike,
-                              compute_theory: callable,
-                              n_curves: int = 100) -> Figure:
-        """
-        Plot theory variations from MCMC samples.
 
-        Parameters
-        ----------
-        ell : array-like
-            Multipole moments
-        samples : array-like
-            MCMC samples
-        compute_theory : callable
-            Function to compute theory given parameters
-        n_curves : int, optional
-            Number of curves to plot
+# Example usage:
+if __name__ == "__main__":
+    # Create mock data
+    ell = np.arange(2, 2501)
+    mock_theory = {
+        'cl_tt': 1000 * (ell/100)**(-0.6) * np.exp(-(ell/1000)**2),
+        'cl_ee': 100 * (ell/100)**(-0.6) * np.exp(-(ell/1000)**2),
+        'cl_te': 300 * (ell/100)**(-0.6) * np.exp(-(ell/1000)**2)
+    }
 
-        Returns
-        -------
-        Figure
-            Theory variation plot
-        """
-        fig, ax = plt.subplots(figsize=self.fig_size)
+    mock_data = {key: val * (1 + 0.05 * np.random.randn(len(ell)))
+                 for key, val in mock_theory.items()}
+    mock_errors = {key: np.abs(0.1 * val)
+                   for key, val in mock_theory.items()}
 
-        # Randomly select samples
-        indices = np.random.choice(len(samples), n_curves)
-
-        # Plot theory curves
-        for i in indices:
-            params = samples[i]
-            theory = compute_theory(params)
-            ax.plot(ell, theory, color=self.colors[0],
-                    alpha=0.1)
-
-        # Customize plot
-        ax.set_xlabel(r'$\ell$')
-        ax.set_ylabel(r'$D_\ell$ [$\mu$K$^2$]')
-        ax.set_xscale('log')
-        ax.set_yscale('log')
-
-        plt.tight_layout()
-        return fig
-
-    def save_publication_plots(self, filename: str,
-                               fig: Figure,
-                               dpi: int = 300) -> None:
-        """
-        Save publication-quality plots.
-
-        Parameters
-        ----------
-        filename : str
-            Output filename
-        fig : Figure
-            Figure to save
-        dpi : int, optional
-            Resolution in dots per inch
-        """
-        # Save in multiple formats
-        fig.savefig(f"{filename}.pdf", dpi=dpi, bbox_inches='tight')
-        fig.savefig(f"{filename}.png", dpi=dpi, bbox_inches='tight')
+    # Create plot
+    plotter = CMBPlotter()
+    fig = plotter.plot_power_spectra(mock_theory, mock_data, mock_errors)
+    plt.show()
