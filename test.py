@@ -85,10 +85,10 @@ def main():
             'ee_error': (observed_data['ee']['error_plus'] + observed_data['ee']['error_minus']) / 2
         }
         mcmc = MCMCAnalysis(power_calculator=calculator,
-                            data=data_mcmc, param_info=param_info)
+                            data=data_mcmc, param_info=param_info, n_cores=-1)
 
         # Run MCMC
-        results = mcmc.run_mcmc()
+        results = mcmc.run_mcmc(progress=True)
         print(type(results))
         # Plot diagnostics
         diagnostics = MCMCDiagnostics()
