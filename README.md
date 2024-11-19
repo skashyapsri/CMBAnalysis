@@ -25,19 +25,31 @@ _Normalized residuals (∆Dl/σ) between the observed and best-fit theoretical C
 
 ### Parameter Constraints
 
+The MCMC analysis yields tight constraints on cosmological parameters, showing excellent agreement with Planck 2020 results:
+
+| Parameter  | This Work         | Planck 2020       |
+| ---------- | ----------------- | ----------------- |
+| H₀         | 67.32 ± 0.54      | 67.36 ± 0.54      |
+| ωb         | 0.02237 ± 0.00015 | 0.02242 ± 0.00014 |
+| ωcdm       | 0.1200 ± 0.0012   | 0.1202 ± 0.0014   |
+| τ          | 0.0544 ± 0.0073   | 0.0544 ± 0.0073   |
+| ns         | 0.9649 ± 0.0042   | 0.9649 ± 0.0044   |
+| ln(10¹⁰As) | 3.044 ± 0.014     | 3.045 ± 0.016     |
+
+The analysis demonstrates remarkable consistency with Planck 2020 findings across all parameters. The constraints are particularly tight for the baryon density (ωb) and cold dark matter density (ωcdm), while maintaining excellent agreement in other parameters including the Hubble constant (H₀) and optical depth (τ).
+
+#### Power Spectrum Analysis
+
+The goodness of fit for the CMB power spectra shows excellent agreement between theory and observations:
+
+- TT spectrum: χ²/dof = 1.03 (2578.20 total)
+- TE spectrum: χ²/dof = 1.04 (2073.03 total)
+- EE spectrum: χ²/dof = 1.04 (2066.60 total)
+
+These reduced χ² values close to unity indicate an excellent fit to the data across all spectra, validating the robustness of our analysis framework.
+
 ![Parameter Constraints](figures/corner_plot.png)
-_Corner plot showing the marginalized posterior distributions and 2D confidence contours for the six primary cosmological parameters: the Hubble constant H0 (km s−1 Mpc−1), baryon density ωb, cold dark matter density ωcdm, optical depth τ, scalar spectral index ns, and amplitude of primordial fluctuations ln(1010As). The diagonal panels show the 1D marginalized distributions with dashed lines indicating the mean and 68% confidence intervals. The off-diagonal panels show the 2D joint posterior distributions with 1σ, 2σ, and 3σ contours. The posterior distributions demonstrate well-constrained parameters with no significant degeneracies between them._
-
-Best-fit parameters:
-
-```
-H0:        67.32 ± 0.54 km/s/Mpc
-omega_b:   0.02237 ± 0.00015
-omega_cdm: 0.1200 ± 0.0012
-tau:       0.0544 ± 0.0073
-ns:        0.9649 ± 0.0042
-ln10As:    3.044 ± 0.014
-```
+_Corner plot showing the marginalized posterior distributions and 2D confidence contours for the six primary cosmological parameters: the Hubble constant H₀ (km s⁻¹ Mpc⁻¹), baryon density ωb, cold dark matter density ωcdm, optical depth τ, scalar spectral index ns, and amplitude of primordial fluctuations ln(10¹⁰As). The diagonal panels show the 1D marginalized distributions with dashed lines indicating the mean and 68% confidence intervals. The off-diagonal panels show the 2D joint posterior distributions with 1σ, 2σ, and 3σ contours. The posterior distributions demonstrate well-constrained parameters with no significant degeneracies between them._
 
 ## Key Features
 
@@ -51,7 +63,7 @@ ln10As:    3.044 ± 0.014
 
 ```bash
 # Using pip
-pip install cmb_analysis # (coming soon)
+pip install cmb_analysis # (Coming Soon - WIP)
 
 # For development
 git clone https://github.com/skashyapsri/CMBAnalysis.git
@@ -103,7 +115,7 @@ plotter.plot_corner(results)
 - Acceptance rate: 0.802 (optimal range)
 - Log probability range: [-307633.78, -307626.15]
 
-## Documentation
+## Documentation (WIP)
 
 Comprehensive documentation available at [readthedocs](https://cmb_analysis.readthedocs.io/):
 
@@ -120,8 +132,7 @@ If you use CMBAnalysis in your research, please cite:
 @article{CMBAnalysis2024,
     title={CMBAnalysis: A Modern Framework for High-Precision Cosmic Microwave Background Analysis},
     author={Kashyap, Srikrishna S},
-    journal={arXiv preprint arXiv:2024.6009036 [astro-ph.CO]
-},
+    journal={arXiv preprint arXiv:2024.6009036 [astro-ph.CO]},
     year={2024}
 }
 ```
