@@ -2,7 +2,7 @@
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![arXiv](https://img.shields.io/badge/arXiv-2024.6009036-b31b1b.svg)](https://arxiv.org/abs/2024.6009036)
+[![arXiv](https://img.shields.io/badge/arXiv-2411.12207-b31b1b.svg)](https://arxiv.org/abs/2411.12207)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](docs/)
 [![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](tests/)
 
@@ -132,7 +132,7 @@ If you use CMBAnalysis in your research, please cite:
 @article{CMBAnalysis2024,
     title={CMBAnalysis: A Modern Framework for High-Precision Cosmic Microwave Background Analysis},
     author={Kashyap, Srikrishna S},
-    journal={arXiv preprint arXiv:2024.6009036 [astro-ph.CO]},
+    journal={arXiv preprint arXiv:2411.12207 [astro-ph.CO]},
     year={2024}
 }
 ```
